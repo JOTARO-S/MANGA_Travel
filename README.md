@@ -23,7 +23,20 @@
 - 好きな漫画、アニメや観光地をユーザー同士で語り合いたいとき
 
 ## 設計書
-- 作成中
+- テーブル定義書
+https://docs.google.com/spreadsheets/d/1tOdR3MP_JnsyOaKuZXos_4iEcm_I-lvY_bUhT-1w5B4/edit?usp=sharing
+- アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1OY5TZRzwJWClUaFVZp8MRvLXwPSEkP7K-lGydGzJBaY/edit?usp=sharing
+- ER図
+https://drive.google.com/file/d/1gsuJ3oZUccypxxgd1KVi9yMBDdZ5GaoP/view?usp=sharing
+- 画面変移図（User)
+https://drive.google.com/file/d/1MX2dj_Go2GwRrY41xvOeheRjrygrqGY4/view?usp=sharing
+- 画面変移図（Admin)
+https://drive.google.com/file/d/1uBtV5y0iQQUlPmVCLY_SuOCWZwVWphed/view?usp=sharing
+- ワイヤーフレーム（User）
+https://docs.google.com/presentation/d/1kUlF2ubP4XCLdUb1vFDIN5kWnkMq6eKITBtwWPTnRyo/edit?usp=sharing
+- ワイヤーフレーム（Admin)
+https://docs.google.com/presentation/d/1biFj-j4RgeBX3kG23Oewm0-vLzRCXuCKBauuwXEgwEE/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
