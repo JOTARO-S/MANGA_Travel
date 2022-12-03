@@ -1,33 +1,28 @@
 Rails.application.routes.draw do
   
   namespace :admin do
-    get 'categories/index'
-    get 'categories/edit'
+    root to: "homes#top"
+    resources :users, except: [:new, :create, :destroy]
+    resources :posts, except: [:new, :create] do
+      resources :comments, only: [:destroy]
+    end
+    resources :categories, except: [:new, :show]
   end
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'chats/new'
-    get 'chats/show'
-    get 'chats/index'
-  end
-  namespace :public do
-    get 'bookmarks/index'
-  end
-  namespace :public do
-    get 'posts/new'
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-  end
-  namespace :public do
-    get 'homes/top'
+  scope :public do
+    root to: "homes#top"
+    resources :users, except: [:new, :create, :destroy]
+    get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+    patch "users/withdraw" => "users#withdraw", as: "withdraw"
+    resources :posts do
+      resource :bookmarks, only: [:create,:destroy]
+      resources :comments, only: [:create,:destroy]
+      resources :tags, only: [:create,:destroy]
+    end
+    get "bookmarks" => "bookmarks#index", as: "bookmarks"
+    get "posts/draft" => "posts#draft", as: "draft"
+    patch "posts/draft/:id" => "posts#draft_edit", as: "draft_edit"
+    delete "posts/draft/:id" => "posts#draft_destroy", as: "draft_destroy"
+    resources :chats, except: [:edit, :update]
   end
 # 顧客用
 devise_for :users, controllers: {
