@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
     resources :categories, except: [:new, :show]
   end
-  scope :public do
+  scope module: :public do
     root to: "homes#top"
     resources :users, except: [:new, :create, :destroy]
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
