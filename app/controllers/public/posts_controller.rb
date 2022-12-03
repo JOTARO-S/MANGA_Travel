@@ -10,4 +10,19 @@ class Public::PostsController < ApplicationController
 
   def edit
   end
+  
+  def update
+  end
+  
+  def destroy
+  end
+  
+  def draft
+  end
+  
+  def draft_edit
+  end
+  
+  def draft_destroy
+  end
 end
