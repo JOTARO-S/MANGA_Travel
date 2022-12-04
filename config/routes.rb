@@ -10,22 +10,22 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root to: "homes#top"
-    resources :users, except: [:new, :create, :destroy]
+    get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "users/withdraw" => "users#withdraw", as: "withdraw"
+    resources :users, except: [:new, :create, :destroy]
+    get "posts/draft" => "posts#draft", as: "draft"
+    patch "posts/draft/:id" => "posts#draft_edit", as: "draft_edit"
+    delete "posts/draft/:id" => "posts#draft_destroy", as: "draft_destroy"
     resources :posts do
       resource :bookmarks, only: [:create,:destroy]
       resources :comments, only: [:create,:destroy]
       resources :tags, only: [:create,:destroy]
     end
-    get "bookmarks" => "bookmarks#index", as: "bookmarks"
-    get "posts/draft" => "posts#draft", as: "draft"
-    patch "posts/draft/:id" => "posts#draft_edit", as: "draft_edit"
-    delete "posts/draft/:id" => "posts#draft_destroy", as: "draft_destroy"
     resources :chats, except: [:edit, :update]
   end
 # 顧客用
-devise_for :users, controllers: {
+devise_for :user, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
