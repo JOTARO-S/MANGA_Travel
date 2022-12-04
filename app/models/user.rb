@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :bookmarks , dependent: :destroy
   has_many :user_chats,dependent: :destroy
   
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
 end

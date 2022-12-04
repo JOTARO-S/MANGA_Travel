@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :chats, except: [:edit, :update]
   end
 # 顧客用
-devise_for :users, controllers: {
+devise_for :user, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
