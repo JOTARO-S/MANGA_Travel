@@ -10,6 +10,15 @@ class User < ApplicationRecord
   has_many :bookmarks , dependent: :destroy
   has_many :user_chats,dependent: :destroy
   
+  has_one_attached :user_image
+
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :explanation, length: {maximum: 50}
+  
+  def get_user_image
+    (user_image.attached?) ? user_image : 'no_image.jpg'
+  end
+  
   def active_for_authentication?
     super && (is_deleted == false)
   end

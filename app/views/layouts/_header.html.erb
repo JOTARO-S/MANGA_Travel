@@ -15,6 +15,9 @@
               <% end %>
               <!--User側ログイン中のheader-->
               <% if user_signed_in? %> <!--User客側がログイン中か確認する-->
+                  <li><%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark' %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %></li><!--投稿一覧へのリンク-->
+                  <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark' %></li><!--マイページへのリンク-->
                   <li><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
               <!--User側のheader-->
               <% else %><!--非ログイン時に表示するheader-->

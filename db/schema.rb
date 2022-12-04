@@ -116,10 +116,10 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "name", null: false
+    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "explanation"
+    t.text "explanation", default: ""
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
