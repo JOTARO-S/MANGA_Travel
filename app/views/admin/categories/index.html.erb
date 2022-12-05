@@ -16,6 +16,8 @@
       <thead style="background-color:rgba(130,0,0,0.8);">
         <tr>
           <th class="text-white">所在地名</th>
+          <th class="text-white">登録日時</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -23,7 +25,9 @@
         <% @categories.each do |category| %>
           <tr>
             <td><%= category.name %></td>
+            <td><%= category.created_at.to_s(:datetime_jp) %></td>
             <td><%= link_to "編集する", edit_admin_category_path(category), class: "btn btn-success" %></td>
+            <td><%= link_to "削除する", admin_category_path(category), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger"%></td>
           </tr>
         <% end %>
       </tbody>
