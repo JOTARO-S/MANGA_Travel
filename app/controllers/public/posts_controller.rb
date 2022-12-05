@@ -8,14 +8,17 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post= Post.find(params[:id])
   end
 
   def edit
+    @post= Post.find(params[:id])
   end
   
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.post_tag_id = current_user.id #タグ機能作成後、変更すること
       if @post.save
         redirect_to post_path(@post.id)
       else
@@ -47,6 +50,6 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:post_image, :name, :place, :explanation, :user_id, :post_tag_id, :category_id, :is_active, :draft_status)
+    params.require(:post).permit(:name, :place, :explanation, :user_id, :post_tag_id, :category_id, :is_active, :draft_status, post_image: [])
   end
 end

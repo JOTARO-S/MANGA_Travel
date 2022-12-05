@@ -6,10 +6,10 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
     
-    has_one_attached :post_image
-    
-  def get_post_image
-    (post_image.attached?) ? post_image : 'no_image.jpg'
+    has_many_attached :post_image
+  
+  def get_category_name
+    Category.find(category_id).name
   end
   
   validates :name, length: { maximum: 30 }
