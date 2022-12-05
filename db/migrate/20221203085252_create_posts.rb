@@ -7,8 +7,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :name,               null: false
       t.string :place,              null: true
       t.text :explanation,          null: false
-      t.boolean :is_active,         null: false
-      t.boolean :draft_status,      null: false
+      t.boolean :is_active,         null: false, default: false
+      t.boolean :draft_status,      null: false, default: false
       
       t.timestamps
     end

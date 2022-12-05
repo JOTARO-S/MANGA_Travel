@@ -1,0 +1,18 @@
+  def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if params[:post]
+      if @post.save(context: :publicize)
+        redirect_to post_path(@post.id)
+      else
+      render :new, notice: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください。"
+      end
+    
+    else
+      if @post.update(draft_status: true)
+        redirect_to user_path(current_user), notice: "下書きに保存しました！"
+      else
+        render :new, notice: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください。"
+      end
+    end
+  end

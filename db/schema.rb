@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
     t.string "name", null: false
     t.string "place"
     t.text "explanation", null: false
-    t.boolean "is_active", null: false
-    t.boolean "draft_status", null: false
+    t.boolean "is_active", default: false, null: false
+    t.boolean "draft_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
