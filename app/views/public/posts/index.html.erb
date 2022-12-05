@@ -4,8 +4,8 @@
             <%= render "layouts/search", { search: @search } %>
             <div class="row mt-3">
 
-                    <%= link_to "新規投稿", new_post_path, class: "btn btn-success col-2 offset-7" %>
-                    <%= link_to "下書き", draft_path(current_user), class: "btn btn-success col-2 ml-3" %>
+                    <%= link_to "新規投稿", new_post_path, 'data-turbolinks': false, class: "btn btn-success col-2 offset-7" %>
+                    <%= link_to "下書き", draft_path(current_user), 'data-turbolinks': false, class: "btn btn-success col-2 ml-3" %>
                 </div>
             </div>
             <table class='table table-hover table-inverse mt-3'>
@@ -17,19 +17,21 @@
                   <th>所在地</th>
                   <th>ユーザー名</th>
                   <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <% @posts.each do |post| %>
                   <tr>
                     <td><%= link_to post.name, post_path(post) %></td>
-                    <td><%= post.place %></td>
+                    <td><%= link_to post.place, post_path(post) %></td>
                     <td>
-                      <%= post.post_tag_id %>
+                      <%= link_to post.post_tag_id, post_path(post)  %>
                     </td>
-                    <td><%= post.categories.name %></td>
-                    <td><%= post.user.name %></td>
-                    <td>★</td>
+                    <td><%= link_to post.get_category_name, post_path(post) %></td>
+                    <td><%= link_to post.user.name, user_path(post.user.id) %></td>
+                    <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
+                    <td><%= link_to "★", post_path(post), class: "btn btn-success" %></td>
                   </tr>
                 <% end %>
               </tbody>
