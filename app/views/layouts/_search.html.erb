@@ -1,0 +1,8 @@
+<div class="col-md-12 text-center">
+ <%= search_form_for search, url: posts_path do |form| %>
+ <%= select_tag("s1", options_for_select(["1","2","3"]), class: "col-1 mr-3") %>
+ <%= form.text_field :name_cont, placeholder: "入力", class: "mr-3 col-6" %>
+ <%= select_tag("s1", options_for_select(["1","2","3"]), class: "col-2 mr-3") %>
+ <%= form.submit ("検索"), class: "btn btn-secondary col-2" %>
+ <% end %>
+ </div>
