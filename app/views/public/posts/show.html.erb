@@ -1,11 +1,18 @@
 <div class="container p-3" style="background-color:rgba(77,77,77,0.3);">
  <div class="row">
-   <h2 class="col-md-6">投稿詳細</h2>
-     <%= link_to "編集", edit_post_path(@post), 'data-turbolinks': false, class: "btn btn-success col-1 offset-1" %>
+    <h2 class="col-md-6">
+       投稿詳細
+         <% if @post.user == current_user %>
+          <% if @post.is_active == true %>
+           <%= link_to "（公開停止中）", edit_post_path(@post), 'data-turbolinks': false %>
+          <% end %>
+         <% end %>
+    </h2>
+     <%= link_to "保存", posts_path, 'data-turbolinks': false, class: "btn btn-secondary col-1 ml-3" %>
      <% if @post.user == current_user %>
-       <%= link_to '削除', post_path(@post), 'data-turbolinks': false, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger col-1 offset-1"%>
+       <%= link_to "編集", edit_post_path(@post), 'data-turbolinks': false, class: "btn btn-success col-1 offset-2 mr-3" %>
+       <%= link_to '削除', post_path(@post), 'data-turbolinks': false, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger col-1"%>
      <% end %>
-     <%= link_to "保存", posts_path, 'data-turbolinks': false, class: "btn btn-success col-1 ml-3" %>
    </div>
      <div class="row p-2">
         <div class="col-md-6">
@@ -30,12 +37,30 @@
              <td style="background-color:rgba(255,255,255,0.5);"><%= @post.place %></td>
            </tr>
            <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">所在地名</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.get_category_name %></td>
+           </tr>
+           <tr>
              <td class="text-white" style="background-color:rgba(130,0,0,0.8);">タグ</td>
              <td style="background-color:rgba(255,255,255,0.5);"><%= @post.post_tag_id %></td>
            </tr>
            <tr>
              <td class="text-white" style="background-color:rgba(130,0,0,0.8);">説明</td>
              <td style="background-color:rgba(255,255,255,0.5);"><%= @post.explanation %></td>
+           </tr>
+           <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">ユーザー</td>
+             <td style="background-color:rgba(255,255,255,0.5);">
+                 <%= link_to @post.user.name, user_path(@post.user_id) %>
+             </td>
+           </tr>
+           <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">投稿日時</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.created_at.to_s(:datetime_jp) %></td>
+           </tr>
+           <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">更新日時</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.updated_at.to_s(:datetime_jp) %></td>
            </tr>
           </tbody>
          </table>
