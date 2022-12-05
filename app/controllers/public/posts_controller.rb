@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def new
     @post = Post.new
   end
@@ -9,6 +10,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post= Post.find(params[:id])
+    @post_comment = Comment.new
   end
 
   def edit
@@ -29,13 +31,16 @@ class Public::PostsController < ApplicationController
   def update
     @post= Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post.id), notice: "更新しました。"
     else
       render :edit
     end
   end
   
   def destroy
+    @post= Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: "削除しました。"
   end
   
   def draft
