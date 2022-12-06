@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "users/withdraw" => "users#withdraw", as: "withdraw"
     resources :users, except: [:new, :create, :destroy]
-    get "posts/draft/:id" => "posts#draft", as: "draft"
-    patch "posts/draft/:id" => "posts#draft_edit", as: "draft_edit"
-    delete "posts/draft/:id" => "posts#draft_destroy", as: "draft_destroy"
+    get "posts/draft" => "posts#draft", as: "draft"
+    patch "posts/draft" => "posts#draft_edit", as: "draft_edit"
+    delete "posts/draft" => "posts#draft_destroy", as: "draft_destroy"
     resources :posts do
       resource :bookmarks, only: [:create,:destroy]
       resources :comments, only: [:create,:destroy]

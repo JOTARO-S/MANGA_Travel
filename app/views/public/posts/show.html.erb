@@ -42,7 +42,11 @@
            </tr>
            <tr>
              <td class="text-white" style="background-color:rgba(130,0,0,0.8);">タグ</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.post_tag_id %></td>
+             <td style="background-color:rgba(255,255,255,0.5);">
+              <% @post_tags.each do |tag| %>
+              <%= link_to tag.tag_name, post_path(@post)  %><%="(#{tag.posts.count})" %>
+              <% end %>
+             </td>
            </tr>
            <tr>
              <td class="text-white" style="background-color:rgba(130,0,0,0.8);">説明</td>
@@ -83,7 +87,7 @@
         <% end %>
     </div>
     <div class="col-md-7">
-      <%= post_comment.comment_content %>
+      <%= post_comment.comment_content %><br>
       <%= post_comment.created_at.to_s(:datetime_jp) %>
         <% if post_comment.user == current_user %>
           <%= link_to 'Destroy', post_comment_path(post_comment.post,post_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>

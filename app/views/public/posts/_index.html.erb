@@ -1,3 +1,9 @@
+            <% if posts.count == 0 %>
+            <div class="row">
+              <h3>投稿はありません。</h3>
+            </div>
+            <% end %>
+            <% unless posts.count == 0 %>
             <table class='table table-hover table-inverse mt-3'>
               <thead>
                 <tr>
@@ -10,17 +16,34 @@
                 </tr>
               </thead>
               <tbody>
-                <% @posts.each do |post| %>
+                <% posts.each do |post| %>
+                 <% if post.is_active == false %>
                   <tr>
                     <td><%= link_to post.name, post_path(post) %></td>
                     <td><%= link_to post.place, post_path(post) %></td>
                     <td>
-                      <%= link_to post.post_tag_id, post_path(post)  %>
+                      <%="(#{post.tags.count})" %>
                     </td>
                     <td><%= link_to post.get_category_name, post_path(post) %></td>
                     <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
                     <td><%= link_to "★", post_path(post), class: "btn btn-success" %></td>
                   </tr>
+                 <% end %>
+                 <% if post.user == current_user %>
+                  <% if post.is_active == true %>
+                  <tr>
+                    <td><%= link_to post.name, post_path(post) %></td>
+                    <td><%= link_to post.place, post_path(post) %></td>
+                    <td>
+                      <%="(#{post.tags.count})" %>
+                    </td>
+                    <td><%= link_to post.get_category_name, post_path(post) %></td>
+                    <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
+                    <td>公開停止中</td>
+                  </tr>
+                  <% end %>
+                 <% end %>
                 <% end %>
               </tbody>
             </table>
+            <% end %>
