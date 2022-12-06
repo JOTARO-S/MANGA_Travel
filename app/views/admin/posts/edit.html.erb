@@ -1,2 +1,58 @@
-<h1>Admin::Posts#edit</h1>
-<p>Find me in app/views/admin/posts/edit.html.erb</p>
+<div class="container p-3" style="background-color:rgba(77,77,77,0.3);">
+ <h2>新規投稿</h2>
+  <div class="row p-2">
+        <div class="col-md-8">
+          <%= form_with model: @post, url:post_path(@post),  local: true do |form| %>
+            <div class="form-group row">
+              <%= form.text_field :name, placeholder: "タイトル", class: 'col-md-7 mr-4' %>
+              <%= form.collection_select :category_id, Category.all, :id, :name, include_blank: "所在地を選択してください。", class: 'col-md-4' %>
+            </div>
+            <div class="form-group row">
+              <%= form.text_field :place, placeholder: "場所名", class: 'col-12' %>
+            </div>
+            <div class="form-group row">
+              <%= form.text_area :explanation, placeholder: "本文", class: 'col-12', rows: 15 %>
+            </div>
+            <div class="form-group row">
+              <%= form.text_field :tag_name, value: @post_tags, placeholder: "タグ", class: 'col-10' %>
+            </div>
+            <div class="form-group row">
+              <%= form.file_field :post_image, class: 'col-10', accept: "image/*" %>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div style="background-color:rgba(255,255,254,0.5);">
+                <h3>利用規則</h3>
+                <p>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                    texttexttexttexttexttexttexttext<br>
+                </p>
+            </div>
+          <p>公開ステータス</p>
+          <div class="form-group row">
+            <div class="col-5" style="padding-right:20px;">
+            <%= form.radio_button :is_active, false, checked: true, class: 'offset-1' %>
+            <%= form.label :is_active, "公開中", {value: :false, style: "display: inline-block;"} %>
+            </div>
+            <div class="col-6" style="padding-right:20px;">
+            <%= form.radio_button :is_active, true, class: 'offset-1' %>
+            <%= form.label :is_active, "公開停止中", {value: :true, style: "display: inline-block;"} %>
+            </div>
+          </div>
+            <div class="form-group row">
+              <%= form.submit :投稿する, class: 'btn btn-success' %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

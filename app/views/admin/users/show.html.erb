@@ -1,0 +1,39 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+        <table class='table'>
+          <tr><%= image_tag @user.get_user_image, size:'100x100' %></tr>
+          <tr>
+	          <th>ID名</th>
+	          <th><%= @user.id %></th>
+          </tr>
+          <tr>
+	          <th>ユーザー名</th>
+	          <th><%= @user.name %></th>
+          </tr>
+          <tr>
+	          <th>メールアドレス</th>
+	          <th><%= @user.email %></th>
+          </tr>
+          <tr>
+	          <th>プロフィール</th>
+	          <th><%= @user.explanation %></th>
+          </tr>
+           <tr>
+	          <th>退会ステータス</th>
+	          <th><%= @user.is_deleted %></th>
+          </tr>
+        </table>
+　
+　    <% if @user == current_user %>
+        <div class='row'>
+          <%= link_to "編集",edit_admin_user_path(@user), class: "btn btn-outline-secondary btn-block"%>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class='col-md-8 offset-md-1'>
+      <%= render 'admin/posts/index', posts: @posts %>
+    </div>
+</div>

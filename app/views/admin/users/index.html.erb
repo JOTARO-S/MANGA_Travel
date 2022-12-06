@@ -1,0 +1,23 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <h2>Users</h2>
+        <table class='table'>
+          <tbody>
+            <% @users.each do |user| %>
+            <% if user.is_deleted == false %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= image_tag user.get_user_image, size: '50x50' %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to 'Show', admin_user_path(user) %></td>
+                <td><%= user.is_deleted %></td>
+              </tr>
+            <% end %>
+            <% end %>
+         </tbody>
+        </table>
+    </div>
+  </div>
+</div>
