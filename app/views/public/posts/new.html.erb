@@ -14,7 +14,7 @@
               <%= form.text_area :explanation, placeholder: "本文", class: 'col-12', rows: 15 %>
             </div>
             <div class="form-group row">
-              <%= form.text_field :tag.name, placeholder: "タグ", class: 'col-10' %>
+              <%= form.text_field :tag_name, value: @tag_list, placeholder: "タグ", class: 'col-10' %>
             </div>
             <div class="form-group row">
               <%= form.file_field :post_image, multiple: true, class: 'col-10', accept: "image/*" %>
@@ -37,9 +37,18 @@
                     texttexttexttexttexttexttexttext<br>
                 </p>
             </div>
-            <div class="form-group row ml-5">
-              <%= form.submit :投稿する, class: 'btn btn-success mr-4' %>
-              <%= form.submit :下書き, :name => "draft", class: 'btn btn-primary' %>
+            <div class="form-group row">
+              <div class="col-5" style="padding-right:20px;">
+              <%= form.radio_button :draft_status, false, checked: true %>
+              <%= form.label :draft_status, "公開", {value: :false, style: "display: inline-block;"} %>
+              </div>
+              <div class="col-6" style="padding-right:20px;">
+              <%= form.radio_button :draft_status, :true %>
+              <%= form.label :draft_status, "下書き保存", {value: :true, style: "display: inline-block;"} %>
+              </div>  
+            </div>
+            <div class="form-group row">
+              <%= form.submit :投稿する, class: 'btn btn-success' %>
             </div>
           <% end %>
         </div>
