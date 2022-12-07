@@ -24,7 +24,13 @@
                     <td><%= link_to post.get_category_name, admin_post_path(post) %></td>
                     <td><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
                     <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-success" %></td>
-                    <td><%= post.is_active %></td>
+                    <td>
+                      <% if post.is_active %>
+                      非公開
+                      <% elsif %>
+                      公開
+                      <% end %>
+                    </td>
                   </tr>
                  <% end %>
                 <% end %>

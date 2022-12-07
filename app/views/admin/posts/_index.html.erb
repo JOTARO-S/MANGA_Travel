@@ -17,7 +17,6 @@
               </thead>
               <tbody>
                 <% posts.each do |post| %>
-                 <% if post.is_active == false %>
                   <tr>
                     <td><%= link_to post.name, admin_post_path(post) %></td>
                     <td><%= link_to post.place, admin_post_path(post) %></td>
@@ -26,21 +25,14 @@
                     </td>
                     <td><%= link_to post.get_category_name, post_path(post) %></td>
                     <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-success" %></td>
-                    <td><%= link_to "★", admin_post_path(post), class: "btn btn-success" %></td>
-                  </tr>
-                 <% end %>
-                  <% if post.is_active == true %>
-                  <tr>
-                    <td><%= link_to post.name, admin_post_path(post) %></td>
-                    <td><%= link_to post.place, admin_post_path(post) %></td>
                     <td>
-                      <%="(#{post.tags.count})" %>
+                      <% if post.is_active == true %>
+                        公開停止中
+                      <% else %>
+                        公開中
+                      <% end %>
                     </td>
-                    <td><%= link_to post.get_category_name, admin_post_path(post) %></td>
-                    <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-success" %></td>
-                    <td>公開停止中</td>
                   </tr>
-                 <% end %>
                 <% end %>
               </tbody>
             </table>

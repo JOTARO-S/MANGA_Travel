@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row mt-3">
+            <table class='table table-hover table-inverse mt-3'>
+              <thead>
+                <tr>
+                  <th>コメント</th>
+                  <th>ユーザー名</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @comments.each do |comment| %>
+                  <tr>
+                    <td><%= comment.comment_content %></td>
+                    <td><%= link_to comment.user.name, admin_user_path(comment.user.id) %></td>
+                    <td><%= link_to "詳細", admin_post_path(comment.post.id), class: "btn btn-success" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            
+            
+        </div>
+    </div>
+</div>
+

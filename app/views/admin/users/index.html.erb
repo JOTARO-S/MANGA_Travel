@@ -3,18 +3,34 @@
     <div class='col-md-12'>
       <h2>Users</h2>
         <table class='table'>
+          <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>プロフィール画像</th>
+                  <th>ユーザー名</th>
+                  <th>メールアドレス</th>
+                  <th>登録日時</th>
+                  <th></th>
+                  <th>ステータス</th>
+                </tr>
+              </thead>
           <tbody>
             <% @users.each do |user| %>
-            <% if user.is_deleted == false %>
               <tr>
                 <td><%= user.id %></td>
                 <td><%= image_tag user.get_user_image, size: '50x50' %></td>
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
+                <td><%= user.created_at.to_s(:datetime_jp) %></td>
                 <td><%= link_to 'Show', admin_user_path(user) %></td>
-                <td><%= user.is_deleted %></td>
+                <td>
+                  <% if user.is_deleted %>
+                  退会済
+                  <% elsif %>
+                  有効
+                  <% end %>
+                </td>
               </tr>
-            <% end %>
             <% end %>
          </tbody>
         </table>
