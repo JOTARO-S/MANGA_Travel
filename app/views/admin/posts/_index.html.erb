@@ -1,5 +1,9 @@
-<div class="container">
-    <div class="row mt-3">
+            <% if posts.count == 0 %>
+            <div class="row">
+              <h3>投稿はありません。</h3>
+            </div>
+            <% end %>
+            <% unless posts.count == 0 %>
             <table class='table table-hover table-inverse mt-3'>
               <thead>
                 <tr>
@@ -7,38 +11,29 @@
                   <th>住所・施設名</th>
                   <th>タグ</th>
                   <th>所在地</th>
-                  <th>ユーザー名</th>
                   <th></th>
-                  <th>公開ステータス</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <% @posts.each do |post| %>
-                 <% if post.draft_status == false %>
+                <% posts.each do |post| %>
                   <tr>
                     <td><%= link_to post.name, admin_post_path(post) %></td>
                     <td><%= link_to post.place, admin_post_path(post) %></td>
                     <td>
                       <%="(#{post.tags.count})" %>
                     </td>
-                    <td><%= link_to post.get_category_name, admin_post_path(post) %></td>
-                    <td><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
+                    <td><%= link_to post.get_category_name, post_path(post) %></td>
                     <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-success" %></td>
                     <td>
-                      <% if post.is_active %>
-                      非公開
-                      <% elsif %>
-                      公開
+                      <% if post.is_active == true %>
+                        公開停止中
+                      <% else %>
+                        公開中
                       <% end %>
                     </td>
                   </tr>
-                 <% end %>
                 <% end %>
               </tbody>
             </table>
-            
-            
-        </div>
-    </div>
-</div>
-
+            <% end %>

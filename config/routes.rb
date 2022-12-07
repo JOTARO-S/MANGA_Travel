@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: "homes#top"
-    resources :users, except: [:new, :create, :destroy]
+    get "comments" => "comments#index", as: "comments"
+    resources :users, except: [:new, :edit, :create, :destroy]
     resources :posts, except: [:new, :create] do
-      resources :comments, only: [:destroy]
+      resources :comments, only: [:create, :destroy, :update]
     end
     resources :categories, except: [:new, :show]
   end
@@ -18,9 +19,9 @@ Rails.application.routes.draw do
     patch "posts/draft" => "posts#draft_edit", as: "draft_edit"
     delete "posts/draft" => "posts#draft_destroy", as: "draft_destroy"
     resources :posts do
-      resource :bookmarks, only: [:create,:destroy]
-      resources :comments, only: [:create,:destroy]
-      resources :tags, only: [:create,:destroy]
+      resource :bookmarks, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+      resources :tags, only: [:create, :destroy]
     end
     resources :chats, except: [:edit, :update]
   end
