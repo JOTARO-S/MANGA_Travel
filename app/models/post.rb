@@ -39,16 +39,16 @@ class Post < ApplicationRecord
   
   def self.looks(search, word)
     if search == "perfect_match"
-      @post = post.where("name LIKE?", "#{word}")
+      @post = Post.where("name LIKE?", "#{word}")
     elsif search == "partial_match"
-      @post = post.where("name LIKE?", "%#{word}%")
+      @post = Post.where("name LIKE?", "%#{word}%")
     else
-      @post = post.all
+      @post = Post.all
     end
   end
   
   def self.looks(search, keyword)
-    @post = post.where(["name LIKE?", "#{keyword}"])
+    @post = Post.where(["name LIKE?", "#{keyword}"])
   end
   
   validates :name, length: { maximum: 30 }
