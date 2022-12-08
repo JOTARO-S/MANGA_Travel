@@ -12,6 +12,10 @@ class Post < ApplicationRecord
     Category.find(category_id).name
   end
   
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
+  end
+  
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
