@@ -1,13 +1,7 @@
+  <h2>posts search for '<%= @word %>'</h2>
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-12">
-            <%= render "layouts/search", { search: @search } %>
-            <div class="row mt-3">
-
-                    <%= link_to "新規投稿", new_post_path, 'data-turbolinks': false, class: "btn btn-success col-2 offset-7" %>
-                    <%= link_to "下書き", draft_path(current_user), 'data-turbolinks': false, class: "btn btn-success col-2 ml-3" %>
-                </div>
-            </div>
             <table class='table table-hover table-inverse mt-3'>
               <thead>
                 <tr>
@@ -45,4 +39,3 @@
         </div>
     </div>
 </div>
-

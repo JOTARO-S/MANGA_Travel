@@ -3,11 +3,9 @@
         <%= link_to post_bookmarks_path(post.id),method: :delete, class: "text-danger", remote: true do %>
         <button type="button" class="btn btn-secondary">保存済み</button>
         <% end %>
-        <div class="">ブックマーク数:︎︎<%= post.bookmarks.count %></div>
     <% else %>
         <%= link_to post_bookmarks_path(post.id),method: :post, class: "text-primary", remote: true do %>
         <button type="button" class="btn btn-secondary">保存</button>
         <% end %>
-        <div class="">ブックマーク数:︎<%= post.bookmarks.count %></div>
     <% end %>
     </div>

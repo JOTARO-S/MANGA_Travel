@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root to: "homes#top"
+    get "search" => "searches#search"
+    get "search_tag" => "searches#search_tag"
     get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "users/withdraw" => "users#withdraw", as: "withdraw"
