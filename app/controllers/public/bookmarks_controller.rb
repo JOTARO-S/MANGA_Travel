@@ -1,5 +1,6 @@
 class Public::BookmarksController < ApplicationController
  def index
+  @bookmarks = current_user.bookmarks.includes(:user).order(created_at: :desc)
  end
   
  def create

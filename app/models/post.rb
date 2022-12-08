@@ -5,6 +5,7 @@ class Post < ApplicationRecord
     has_many :tags, through: :post_tags
     has_many :comments, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
+    has_many :bookmark_posts, through: :bookmarks, source: :post
     
     has_many_attached :post_image
   
@@ -13,7 +14,7 @@ class Post < ApplicationRecord
   end
   
   def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists?
+    bookmarks.where(user_id: user.id).exists?
   end
   
   def save_tag(sent_tags)

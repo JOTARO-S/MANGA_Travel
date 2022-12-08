@@ -1,2 +1,39 @@
-<h1>Public::Bookmarks#index</h1>
-<p>Find me in app/views/public/bookmarks/index.html.erb</p>
+<div class="container">
+    <div class="row mt-3">
+            <table class='table table-hover table-inverse mt-3'>
+              <thead>
+                <tr>
+                  <th>タイトル</th>
+                  <th>住所・施設名</th>
+                  <th>タグ</th>
+                  <th>所在地</th>
+                  <th>ユーザー名</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @bookmarks.each do |bookmark| %>
+                 <% if bookmark.post.is_active == false %>
+                 <% if bookmark.post.draft_status == false %>
+                  <tr>
+                    <td><%= link_to bookmark.post.name, post_path(bookmark.post.id) %></td>
+                    <td><%= link_to bookmark.post.place, post_path(bookmark.post.id) %></td>
+                    <td>
+                      <%="(#{bookmark.post.tags.count})" %>
+                    </td>
+                    <td><%= link_to bookmark.post.get_category_name, post_path(bookmark.post.id) %></td>
+                    <td><%= link_to bookmark.post.user.name, user_path(bookmark.post.user.id) %></td>
+                    <td><%= link_to "詳細", post_path(bookmark.post.id), class: "btn btn-success" %></td>
+                    <td><%= link_to "★", post_path(bookmark.post.id), class: "btn btn-success" %></td>
+                  </tr>
+                 <% end %>
+                 <% end %>  
+                <% end %>
+              </tbody>
+            </table>
+            
+            
+        </div>
+    </div>
+</div>
