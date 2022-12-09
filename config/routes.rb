@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root to: "homes#top"
+    
     get "search" => "searches#search"
     get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
@@ -29,8 +30,13 @@ Rails.application.routes.draw do
 # 顧客用
 devise_for :user, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
+  passwords: 'public/passwords'
 }
+
+devise_scope :user do
+    post 'user/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
 # 管理者用
 devise_for :admin, controllers: {
