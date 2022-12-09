@@ -5,7 +5,6 @@
                 <tr>
                   <th>タイトル</th>
                   <th>住所・施設名</th>
-                  <th>タグ</th>
                   <th>所在地</th>
                   <th>ユーザー名</th>
                   <th></th>
@@ -17,13 +16,10 @@
                  <% if bookmark.post.is_active == false %>
                  <% if bookmark.post.draft_status == false %>
                   <tr>
-                    <td><%= link_to bookmark.post.name, post_path(bookmark.post.id) %></td>
-                    <td><%= link_to bookmark.post.place, post_path(bookmark.post.id) %></td>
-                    <td>
-                      <%="(#{bookmark.post.tags.count})" %>
-                    </td>
-                    <td><%= link_to bookmark.post.get_category_name, post_path(bookmark.post.id) %></td>
-                    <td><%= link_to bookmark.post.user.name, user_path(bookmark.post.user.id) %></td>
+                    <td><%= link_to bookmark.post.name.truncate(15), post_path(bookmark.post.id) %></td>
+                    <td><%= link_to bookmark.post.place.truncate(15), post_path(bookmark.post.id) %></td>
+                    <td><%= link_to bookmark.post.get_category_name.truncate(15), post_path(bookmark.post.id) %></td>
+                    <td><%= link_to bookmark.post.user.name.truncate(15), user_path(bookmark.post.user.id) %></td>
                     <td><%= link_to "詳細", post_path(bookmark.post.id), class: "btn btn-success" %></td>
                   </tr>
                  <% end %>

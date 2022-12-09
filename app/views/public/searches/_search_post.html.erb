@@ -1,4 +1,4 @@
-<h2>posts search for "<%= @word %>"</h2>
+<h2>投稿検索 for "<%= @search_params %>"</h2>
 
 <% if @posts.empty? %>
   <h4>検索結果はありません。</h4>
@@ -12,7 +12,6 @@
                 <tr>
                   <th>タイトル</th>
                   <th>住所・施設名</th>
-                  <th>タグ</th>
                   <th>所在地</th>
                   <th>ユーザー名</th>
                   <th></th>
@@ -24,15 +23,12 @@
                  <% if post.is_active == false %>
                  <% if post.draft_status == false %>
                   <tr>
-                    <td><%= link_to post.name, post_path(post) %></td>
-                    <td><%= link_to post.place, post_path(post) %></td>
-                    <td>
-                      <%="(#{post.tags.count})" %>
-                    </td>
-                    <td><%= link_to post.get_category_name, post_path(post) %></td>
-                    <td><%= link_to post.user.name, user_path(post.user.id) %></td>
+                    <td><%= post.name.truncate(15) %></td>
+                    <td><%= post.place.truncate(15) %></td>
+                    <td><%= post.get_category_name.truncate(15) %></td>
+                    <td><%= link_to post.user.name.truncate(15), user_path(post.user.id) %></td>
                     <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
-                    <td><div class="bookmark_btn_<%= post.id %> col-md-3">
+                    <td><div class="bookmark_btn_<%= post.id %> col-md-2">
                      <%= render "public/bookmarks/bookmark-btn", post: post %></div>
                     </td>
                   </tr>

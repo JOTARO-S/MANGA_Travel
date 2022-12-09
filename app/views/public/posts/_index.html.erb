@@ -9,7 +9,6 @@
                 <tr>
                   <th>タイトル</th>
                   <th>住所・施設名</th>
-                  <th>タグ</th>
                   <th>所在地</th>
                   <th></th>
                   <th></th>
@@ -19,12 +18,9 @@
                 <% posts.each do |post| %>
                  <% if post.is_active == false %>
                   <tr>
-                    <td><%= link_to post.name, post_path(post) %></td>
-                    <td><%= link_to post.place, post_path(post) %></td>
-                    <td>
-                      <%="(#{post.tags.count})" %>
-                    </td>
-                    <td><%= link_to post.get_category_name, post_path(post) %></td>
+                    <td><%= post.name.truncate(15) %></td>
+                    <td><%= post.place.truncate(15) %></td>
+                    <td><%= post.get_category_name.truncate(15) %></td>
                     <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
                     <td><div class="bookmark_btn_<%= post.id %> col-md-3">
                      <%= render "public/bookmarks/bookmark-btn", post: post %></div>
@@ -34,12 +30,9 @@
                  <% if post.user == current_user %>
                   <% if post.is_active == true %>
                   <tr>
-                    <td><%= link_to post.name, post_path(post) %></td>
-                    <td><%= link_to post.place, post_path(post) %></td>
-                    <td>
-                      <%="(#{post.tags.count})" %>
-                    </td>
-                    <td><%= link_to post.get_category_name, post_path(post) %></td>
+                    <td><%= post.name.truncate(15) %></td>
+                    <td><%= post.place.truncate(15) %></td>
+                    <td><%= post.get_category_name.truncate(15) %></td>
                     <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
                     <td>公開停止中</td>
                   </tr>

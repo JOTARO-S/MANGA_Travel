@@ -46,7 +46,7 @@
              <td class="text-white" style="background-color:rgba(130,0,0,0.8);">タグ</td>
              <td style="background-color:rgba(255,255,255,0.5);">
               <% @post_tags.each do |tag| %>
-              <%= link_to tag.tag_name, post_path(@post)  %><%="(#{tag.posts.count})" %>
+              <%= tag.tag_name %><%="(#{tag.posts.count})" %>
               <% end %>
              </td>
            </tr>
