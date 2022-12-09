@@ -30,7 +30,8 @@ class Public::SearchesController < ApplicationController
                     @search_params = "所在地 = #{params[:prefectures]}, タグ = #{params[:tag_id]}"
                     @prefectures = Category.find(params[:prefectures])
                     @tag = Tag.find(params[:tag_id])
-                    @posts = Post.where(category_id: @prefectures, tag_id: @tag) #要調整
+                    @posts = Post.all
+                    @posts_ad = Post.where(category_id: @prefectures, tag_id: @tag) #要調整
                     
                 elsif params[:prefectures].empty?
                     @search_params = "タイトル = #{params[:word]}, タグ = #{params[:tag_id]}"
@@ -46,7 +47,8 @@ class Public::SearchesController < ApplicationController
                     @search_params = "タイトル = #{params[:word]}, 所在地 = #{params[:prefectures]}, タグ = #{params[:tag_id]}"
                     @tag = Tag.find(params[:tag_id])
                     @prefectures = Category.find(params[:prefectures])
-                    @posts = Post.where(category_id: @prefectures, tag_id: @tag).looks(params[:search], params[:word]) #要調整
+                    @posts = Post.all
+                    @posts_ad = Post.where(category_id: @prefectures, tag_id: @tag).looks(params[:search], params[:word]) #要調整
                 end
             end
         end
