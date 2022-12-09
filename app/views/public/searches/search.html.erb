@@ -1,0 +1,10 @@
+  <% if @range == "User" %>
+  
+  <%= render "public/searches/search_user", { word: @word, users: @users } %>
+    
+  <% else %>
+  
+  <%= render "public/searches/search_post", { word: @word, posts: @posts } %>
+    
+  <% end %>
+  

@@ -5,11 +5,16 @@ class Post < ApplicationRecord
     has_many :tags, through: :post_tags
     has_many :comments, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
+    has_many :bookmark_posts, through: :bookmarks, source: :post
     
     has_many_attached :post_image
   
   def get_category_name
     Category.find(category_id).name
+  end
+  
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user.id).exists?
   end
   
   def save_tag(sent_tags)
@@ -30,6 +35,20 @@ class Post < ApplicationRecord
       new_post_tag = Tag.find_or_create_by(tag_name: new)
       self.tags << new_post_tag
    end
+  end
+  
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post = Post.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @post = Post.where("name LIKE?", "%#{word}%")
+    else
+      @post = Post.all
+    end
+  end
+  
+  def self.looks(search, keyword)
+    @post = Post.where(["name LIKE?", "#{keyword}"])
   end
   
   validates :name, length: { maximum: 30 }

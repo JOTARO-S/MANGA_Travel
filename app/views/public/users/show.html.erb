@@ -22,9 +22,13 @@
     </div>
     
     <div class='col-md-8 offset-md-1'>
-      <%= link_to "ブックマーク一覧",bookmarks_path(@user), class: "btn btn-outline-secondary"%>
+      <% if @user.id == current_user.id %>
+      <%= link_to "ブックマーク一覧",bookmarks_path, class: "btn btn-outline-secondary"%>
       <%= link_to "下書き一覧",draft_path, class: "btn btn-outline-secondary"%>
-      <%= link_to "★",root_path, class: "btn btn-outline-secondary"%>
+      <% end %>
+      <% unless @user.id == current_user.id %>
+      <%= link_to "フォローする",root_path, class: "btn btn-outline-secondary"%>
+      <% end %>
       <%= render 'public/posts/index', posts: @posts %>
     </div>
 </div>

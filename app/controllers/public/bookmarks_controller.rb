@@ -1,11 +1,25 @@
 class Public::BookmarksController < ApplicationController
-  def index
-  end
+ def index
+  @bookmarks = current_user.bookmarks.includes(:user).order(created_at: :desc)
+ end
   
-  def create
+ def create
+  @post = Post.find(params[:post_id])
+  @bookmark = @post.bookmarks.new(user_id: current_user.id)
+  if @bookmark.save
+  else
+   redirect_to request.referer
   end
-  
-  def destroy
+ end
+
+ def destroy
+  @post = Post.find(params[:post_id])
+  @bookmark = @post.bookmarks.find_by(user_id: current_user.id)
+  if @bookmark.present?
+   @bookmark.destroy
+  else
+   redirect_to request.referer
   end
+ end
   
 end

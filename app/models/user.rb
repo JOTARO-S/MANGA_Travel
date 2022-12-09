@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :chats , dependent: :destroy
   has_many :comments , dependent: :destroy
   has_many :bookmarks , dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
   has_many :user_chats,dependent: :destroy
   
   has_one_attached :user_image
@@ -21,6 +22,16 @@ class User < ApplicationRecord
   
   def active_for_authentication?
     super && (is_deleted == false)
+  end
+  
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @user = User.where("name LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end
   end
   
 end

@@ -26,7 +26,9 @@
                     </td>
                     <td><%= link_to post.get_category_name, post_path(post) %></td>
                     <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
-                    <td><%= link_to "★", post_path(post), class: "btn btn-success" %></td>
+                    <td><div class="bookmark_btn_<%= post.id %> col-md-3">
+                     <%= render "public/bookmarks/bookmark-btn", post: post %></div>
+                    </td>
                   </tr>
                  <% end %>
                  <% if post.user == current_user %>
