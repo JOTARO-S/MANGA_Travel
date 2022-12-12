@@ -1,9 +1,13 @@
 <header>
   <nav class="navbar navbar-expand-lg nav-light bg-light">
-    <div class="container" style='height:120px'>
+    <div class="container" style="height:60px">
 
-          <!--管理側でのheader-->
-          <%= link_to root_path , 'data-turbolinks': false do %><%= image_tag 'logo.png', :size => '150x120' %><% end %>
+          <%= link_to root_path , "data-turbolinks": false do %><%= image_tag "logo.png", :size => "150x60" %><% end %>
+          <% if user_signed_in? %>
+          <div>
+            <%= current_user.name %> さん
+          </div>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><!--レスポンシブ対応の展開ボタン-->
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -11,28 +15,28 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %> <!--Admin側がログイン中か確認する-->
-                  <li><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %></li><!--ユーザー一覧へのリンク-->
-                  <li><%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark' %></li><!--投稿一覧へのリンク-->
-                  <li><%= link_to "所在地一覧", admin_categories_path, class: 'nav-link text-dark' %></li><!--所在地一覧へのリンク-->
-                  <li><%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-dark' %></li><!--コメント一覧へのリンク-->
-                  <li><%= link_to "チャット一覧", chats_path, class: 'nav-link text-dark' %></li><!--チャット一覧へのリンク-->
-                  <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "ユーザー一覧", admin_users_path, class: "nav-link text-dark" %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "投稿一覧", admin_posts_path, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
+                  <li><%= link_to "所在地一覧", admin_categories_path, class: "nav-link text-dark" %></li><!--所在地一覧へのリンク-->
+                  <li><%= link_to "コメント一覧", admin_comments_path, class: "nav-link text-dark" %></li><!--コメント一覧へのリンク-->
+                  <li><%= link_to "チャット一覧", chats_path, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
               <% end %>
               <!--User側ログイン中のheader-->
               <% if user_signed_in? %> <!--User客側がログイン中か確認する-->
-                  <li><%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark' %></li><!--ユーザー一覧へのリンク-->
-                  <li><%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %></li><!--投稿一覧へのリンク-->
-                  <li><%= link_to "チャット一覧", chats_path, class: 'nav-link text-dark' %></li><!--チャット一覧へのリンク-->
-                  <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark' %></li><!--マイページへのリンク-->
-                  <li><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "ユーザー一覧", users_path, class: "nav-link text-dark" %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "投稿一覧", posts_path, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
+                  <li><%= link_to "チャット一覧", chats_path, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
+                  <li><%= link_to "マイページ", user_path(current_user), class: "nav-link text-dark" %></li><!--マイページへのリンク-->
+                  <li><%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
               <!--User側のheader-->
               <% else %><!--非ログイン時に表示するheader-->
                 <% unless admin_signed_in? %>
                 <% unless user_signed_in? %>
-                  <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %></li><!--新規登録へのリンク-->
-                  <li><%= link_to "Userログイン", new_user_session_path, class: 'nav-link text-dark' %></li><!--ログイン画面へのリンク-->
-                  <li><%= link_to 'ゲストログイン', user_guest_sign_in_path, class: 'nav-link text-dark', method: :post %></li>
-                  <li><%= link_to " 　　　", new_admin_session_path, class: 'nav-link text-dark' %></li><!--ログイン画面へのリンク-->
+                  <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark" %></li><!--新規登録へのリンク-->
+                  <li><%= link_to "Userログイン", new_user_session_path, class: "nav-link text-dark" %></li><!--ログイン画面へのリンク-->
+                  <li><%= link_to "ゲストログイン", user_guest_sign_in_path, class: "nav-link text-dark", method: :post %></li>
+                  <li><%= link_to " 　　　", new_admin_session_path, class: "nav-link text-dark" %></li><!--ログイン画面へのリンク-->
                 <% end %>
                 <% end %>
               <% end %>

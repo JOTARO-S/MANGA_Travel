@@ -1,34 +1,62 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<div class="container p-3">
+  <div class="row">
+    <div class="col-md-6 mt-1 mx-auto">
+      
+      <div class="p-2" style="background-color: #444;">
+        <h5 class="text-light" style="">新規登録</h3>
+      </div>
+      
+      <div class="p-2" style="background-color: #FFF;">
+      <%= form_with model: @user, url: user_registration_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
   
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+      <div class="field mt-3">
+        <%= f.label "ニックネーム（20文字以内）" %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "20文字以内", autocorrect: "off", autocapitalize: "off", size: " 50 x 30 " %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field mt-3">
+        <%= f.label "メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "あなたのメールアドレス", autocorrect: "off", autocapitalize: "off", size: " 50 x 30 " %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="field mt-3">
+        <%= f.label "パスワード（6文字以上）" %><br />
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード6文字以上", autocorrect: "off", autocapitalize: "off", size: " 50 x 30 " %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field mt-3">
+        <%= f.label "パスワード確認" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度パスワードを入力", autocorrect: "off", autocapitalize: "off", size: " 50 x 30 " %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="mt-3">
+        <p class="text-center">
+          会員登録したのにメールが届かない場合は
+          <%= link_to "コチラ", help_path %>
+        </p>
+      </div>
+  
+      <div class="mt-3">
+        <p class="text-center">
+          <%= link_to "利用規約", terms_path %>、<%= link_to "プライバシーポリシー", privacy_path %>
+          をご確認の上、「同意して新規登録」を押してください。
+        </p>
+      </div>
 
-<%= render "public/shared/links" %>
+
+      <div class="actions mt-3 p-3">
+        <%= f.submit "同意して新規登録する", class: 'btn btn-block btn-success p-2' %>
+      </div>
+      
+      <div class="mt-3">
+        <p class="text-center">※1人のユーザーが複数のアカウントを所持することは利用規約で禁止しております。<br>
+        複数アカウントの所持を発見した場合にはアカウント停止などの措置を取らせていただきます。</p>
+      </div>
+      <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+    
