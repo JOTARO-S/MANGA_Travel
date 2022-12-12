@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :explanation, length: {maximum: 50}
   
   def get_user_image
-    (user_image.attached?) ? user_image : 'no_image.jpg'
+    (user_image.attached?) ? user_image : "no_image.jpg"
   end
   
   def active_for_authentication?
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
   
   def self.guest
-    find_or_create_by!(name: "guestuser", email: 'guest@example.com') do |user|
+    find_or_create_by!(name: "guestuser", email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end

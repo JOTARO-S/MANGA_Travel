@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root to: "homes#top"
-    
+    get "help" => "homes#help"
+    get "privacy" => "homes#privacy"
+    get "terms" => "homes#terms"
     get "search" => "searches#search"
     get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
