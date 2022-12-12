@@ -32,3 +32,56 @@ footer li {
 .footer {
     text-align: center;
 }
+
+// ---------- homes ---------- //
+
+.top-list {
+    text-align: center;
+}
+
+.top-list ul {
+    list-style: none;
+    display: flex;   
+}
+
+.top-list li {
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 40px;
+    margin-right: 5px;
+    
+}
+
+.top-list li :hover{
+    background-color: rgba(0,0,255,0.1);
+    border-radius: 40px;
+}
+
+// ---------- users ---------- //
+
+.user-profile h2 {
+    font-size: 20px;
+    text-align: center;
+    border-radius: 40px 40px 0 0;
+    background-color: #444;
+}
+
+.user-profile tr {
+    outline: solid 2px #444;
+    background-color: #FFF;
+
+}
+
+.profile-image {
+    height: 200px;
+    width: 100%;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    outline: solid 2px #444;
+}
+
+.table-title {
+    background-color :#444;
+    color: #f8f9fa;
+    
+}

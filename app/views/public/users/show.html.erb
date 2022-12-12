@@ -1,18 +1,17 @@
-<div class='container px-5 px-sm-0'>
+<div class='container px-5 px-sm-0' id="user-show">
   <div class='row'>
-    <div class='col-md-3'>
-      <h2>User info</h2>
-        <table class='table'>
-          <tr><%= image_tag @user.get_user_image, size:'100x100' %></tr>
-          <tr>
-	          <th>ユーザー名</th>
-	          <th><%= @user.name %></th>
-          </tr>
-          <tr>
-	          <th>プロフィール</th>
-	          <th><%= @user.explanation %></th>
-          </tr>
-        </table>
+    <div class='col-md-3 user-profile'>
+      <h2 class="mt-3 p-3 text-light"><%= @user.name %>さんのプロフィール</h2>
+        <div class="profile-image"><%= image_tag @user.get_user_image, size: '200x200', class: "image-content" %></div>
+	          <div class="table-title pl-2 mt-2">ユーザー名</div>
+	          <div class="pl-2"><%= @user.name %></div>
+
+	          <div class="table-title pl-2">プロフィール</div>
+	          <div class="pl-2"><%= @user.explanation %></div>
+
+	          <div class="table-title pl-2">投稿数</div>
+	          <div class="pl-2"><%= @user.posts.count %></div>
+
 　
 　    <% if @user == current_user %>
 　    <% if @user.name != "guestuser" %>

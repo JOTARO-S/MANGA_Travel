@@ -1,14 +1,16 @@
 <div class="container" style="height:100px">
-<h4>MANGATravel - 漫画・アニメの舞台となった場所を共有しよう</h4>
+<h4 class="pt-3 pb-3" style="font-size: 30px;">MANGA×Travel - 漫画・アニメの舞台となった場所を共有しよう</h4>
 <%= render "layouts/search", { search: @search } %>
 </div>
-<div class="container" style="height:120px">
+<div class="container mt-5" style="height:120px">
 <div class="row">
-<ul class="navbar-nav ml-auto">
+<div class="top-list">
+<ul class="">
 <li><%= link_to "ユーザー一覧", users_path, class: "nav-link text-dark" %></li><!--ユーザー一覧へのリンク-->
 <li><%= link_to "投稿一覧", posts_path, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
 <li><%= link_to "チャット一覧", chats_path, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
 </ul>
+</div>
 </div>
 </div>
 
