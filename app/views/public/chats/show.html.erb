@@ -1,2 +1,58 @@
-<h1>Public::Chats#show</h1>
-<p>Find me in app/views/public/chats/show.html.erb</p>
+<div class="container p-2" style="background-color:rgba(77,77,77,0.3);">
+ <div class="row p-2">
+     <% if @chat.user == current_user %>
+       <%= link_to '削除', chat_path(@chat), 'data-turbolinks': false, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger col-md-1 ml-3"%>
+     <% end %>
+ </div>
+     <div class="row p-4">
+        <div class="col-md-6">
+         <table class="table table-bordered">
+          <tbody>
+            <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">タイトル</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= @chat.title %></td>
+            </tr>
+           <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">ユーザー名</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= link_to @chat.user.name, user_path(@chat.user_id) %></td>
+           </tr>
+           <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">投稿日時</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= @chat.created_at.to_s(:datetime_jp) %></td>
+           </tr>
+           <tr>
+             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">更新日時</td>
+             <td style="background-color:rgba(255,255,255,0.5);"><%= @chat.updated_at.to_s(:datetime_jp) %></td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+  </div>
+  <div class="row p-3">
+    <h3>チャット</h3>
+    <div class="col-md-12">
+      <%= form_with model: [@chat, @chat_comment] do |form| %>
+      <%= form.text_area :comment_content, rows: '5', class: "form-control" %>
+      <%= form.submit "送信", :class=> "mt-1" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row p-3">
+    <% @chat.comments.each do |chat_comment| %>
+    <div class="col-md-4 offset-1 mt-1">
+        <%= link_to(chat_comment.user) do %>
+          <%= image_tag chat_comment.user.get_user_image, size:"100x100" %><br>
+          <%= chat_comment.user.name %>
+        <% end %>
+    </div>
+    <div class="col-md-7">
+      <%= chat_comment.comment_content %><br>
+      <%= chat_comment.created_at.to_s(:datetime_jp) %>
+        <% if chat_comment.user == current_user %>
+          <%= link_to 'Destroy', chat_comment_path(chat_comment.chat,chat_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>
+        <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+

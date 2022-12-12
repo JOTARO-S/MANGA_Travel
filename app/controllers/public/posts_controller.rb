@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
   end
   
   def draft
-    @posts = current_user.posts
+    @posts = current_user.post
   end
   
   def draft_edit
