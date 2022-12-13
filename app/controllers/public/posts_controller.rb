@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   
   def new
     @post = Post.new
@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
   end
   
   def draft
-    @posts = current_user.post
+    @posts = current_user.posts
   end
   
   def draft_edit

@@ -6,11 +6,18 @@
           <% if @post.is_active == true %>
            <%= link_to "（公開停止中）", edit_post_path(@post), "data-turbolinks": false %>
           <% end %>
+          <% if @post.draft_status == true %>
+           <%= link_to "（下書き）", edit_post_path(@post), "data-turbolinks": false %>
+          <% end %>
          <% end %>
     </h2>
+    <% if @post.is_active == false %>
+    <% if @post.draft_status == false %>
     <div class="bookmark_btn_<%= @post.id %> col-md-2">
      <%= render "public/bookmarks/bookmark-btn", post: @post %>
     </div>
+    <% end %>
+    <% end %>
      <% if @post.user == current_user %>
        <%= link_to "編集", edit_post_path(@post), "data-turbolinks": false, class: "btn btn-success col-md-1" %>
        <%= link_to "削除", post_path(@post), "data-turbolinks": false, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger col-md-1 ml-3"%>
