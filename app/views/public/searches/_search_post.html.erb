@@ -28,9 +28,11 @@
                     <td><%= post.get_category_name.truncate(15) %></td>
                     <td><%= link_to post.user.name.truncate(15), user_path(post.user.id) %></td>
                     <td><%= link_to "詳細", post_path(post), class: "btn btn-success" %></td>
+                    <% if user_signed_in? %>
                     <td><div class="bookmark_btn_<%= post.id %> col-md-2">
                      <%= render "public/bookmarks/bookmark-btn", post: post %></div>
                     </td>
+                    <% end %>
                   </tr>
                  <% end %>
                  <% end %>  

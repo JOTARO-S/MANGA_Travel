@@ -1,5 +1,5 @@
 class Public::ChatsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   
   def new
     @chat = Chat.new

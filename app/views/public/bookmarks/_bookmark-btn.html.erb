@@ -1,11 +1,9 @@
     <% if post.bookmarked_by?(current_user) %>
-    <div class="row">
-        <%= link_to post_bookmarks_path(post.id),method: :delete, class: "text-danger", remote: true do %>
-        <button type="button" class="btn btn-secondary">保存済み</button>
-        <% end %>
+        
+        <%= link_to "保存済み", post_bookmarks_path(post.id),method: :delete, class: "btn btn-secondary", remote: true %>
+
     <% else %>
-        <%= link_to post_bookmarks_path(post.id),method: :post, class: "text-primary", remote: true do %>
-        <button type="button" class="btn btn-secondary">保存</button>
-        <% end %>
+    
+        <%= link_to "ブックマークに保存", post_bookmarks_path(post.id),method: :post, class: "btn btn-secondary", remote: true %>
+        
     <% end %>
-    </div>

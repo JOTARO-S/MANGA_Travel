@@ -5,6 +5,7 @@
           <%= link_to root_path , "data-turbolinks": false do %><%= image_tag "logo.png", :size => "150x60" %><% end %>
           <% if user_signed_in? %>
           <div>
+            ログイン中 :
             <%= current_user.name %> さん
           </div>
           <% end %>
@@ -24,9 +25,9 @@
               <% end %>
               <!--User側ログイン中のheader-->
               <% if user_signed_in? %> <!--User客側がログイン中か確認する-->
-                  <li><%= link_to "ユーザー一覧", users_path, class: "nav-link text-dark" %></li><!--ユーザー一覧へのリンク-->
-                  <li><%= link_to "投稿一覧", posts_path, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
-                  <li><%= link_to "チャット一覧", chats_path, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
+                  <li><%= link_to "ユーザー一覧", users_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "投稿一覧", posts_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
+                  <li><%= link_to "チャット一覧", chats_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
                   <li><%= link_to "マイページ", user_path(current_user), class: "nav-link text-dark" %></li><!--マイページへのリンク-->
                   <li><%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
               <!--User側のheader-->
