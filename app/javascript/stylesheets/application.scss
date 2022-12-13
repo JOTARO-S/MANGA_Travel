@@ -109,24 +109,28 @@ footer li {
 }
 
 .card__header_01 {
-  display: flex;
-  flex-wrap: wrap;
+
 }
 
 .card__title_01 {
   order: 1;
   font-weight: bold;
   text-decoration: none;
+  text-align: center;
   padding-right: 10px;
   margin-top: 16px;
 }
 
 .card__thumbnail_01 {
   margin: 0;
+  padding-top: 10px;
   order: 0;
 }
 
 .card__image_01 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 100px;
   height: 100px;
 }
@@ -147,7 +151,7 @@ footer li {
 .card__text2_01 {
   font-size: .8rem;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: right;
 }
 
