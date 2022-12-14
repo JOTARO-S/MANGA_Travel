@@ -6,7 +6,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.where(is_active: false, draft_status: false).page(params[:page]).per(8)
   end
 
   def show
@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
   end
   
   def draft
-    @posts = current_user.posts
+    @posts = current_user.posts.where(draft_status: true).page(params[:page]).per(8)
   end
   
   def draft_edit

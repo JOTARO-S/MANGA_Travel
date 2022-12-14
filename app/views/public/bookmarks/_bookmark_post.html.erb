@@ -19,8 +19,18 @@
                         </div>
                         <div class="card__body_01">
                              <p class="card__title_01"><%= bookmark.post.name.truncate(15) %></p>
-                            <p class="card__text2_01"><%= bookmark.post.get_category_name.truncate(15) %></p>
-                            <p class="card__text2_01"><%= bookmark.post.place.truncate(15) %></p>
+                            <p class="card__text2_01 center"><%= bookmark.post.get_category_name.truncate(15) %></p>
+                            <p class="card__text2_01 center"><%= bookmark.post.place.truncate(15) %></p>
+                            <p class="card__text2_01 center">
+                                <% if bookmark.post.tags.count == 0 %>
+                                    タグなし
+                                <% else %>
+                                    <% bookmark.post.tags.each do |tag| %>
+                                        <%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %><br>
+                                    <% end %>
+                                <% end %>
+                            </p>
+                            <p class="card__text2_01 center"><%= bookmark.post.explanation.truncate(15) %></p>
                             <p class="card__text2_01">投稿者: <%= link_to bookmark.post.user.name.truncate(15), user_path(bookmark.post.user.id) %></p>
                             <p class="card__text2_01"><%= bookmark.post.created_at.strftime('%Y/%m/%d') %></p>
                         </div>

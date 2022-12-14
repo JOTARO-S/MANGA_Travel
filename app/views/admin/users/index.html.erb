@@ -10,8 +10,8 @@
                   <th>ユーザー名</th>
                   <th>メールアドレス</th>
                   <th>登録日時</th>
-                  <th></th>
                   <th>ステータス</th>
+                  <th></th>
                 </tr>
               </thead>
           <tbody>
@@ -22,7 +22,6 @@
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.created_at.to_s(:datetime_jp) %></td>
-                <td><%= link_to 'Show', admin_user_path(user) %></td>
                 <td>
                   <% if user.is_deleted %>
                   退会済
@@ -30,6 +29,7 @@
                   有効
                   <% end %>
                 </td>
+                <td><%= link_to '詳細ページ', admin_user_path(user) %></td>
               </tr>
             <% end %>
          </tbody>

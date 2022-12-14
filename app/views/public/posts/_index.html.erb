@@ -1,20 +1,6 @@
 <div class='col-md-9 mt-3'>
   <div class="container">
     <div class="row">
-      <% if @user.id == current_user.id %>
-      <div class="col-md-3">
-        <%= link_to "ブックマーク一覧",bookmarks_path, class: "btn btn-outline-secondary" %>
-      </div>
-      <div class="col-md-3">
-        <%= link_to "下書き一覧",draft_path, class: "btn btn-outline-secondary" %>
-      </div>
-      <% end %>
-  
-      <% unless @user.id == current_user.id %>
-        <div class="col-md-3">
-          <%= link_to "フォローする",root_path, class: "btn btn-outline-secondary"%>
-        </div>
-      <% end %>
   
       <% if posts.count == 0 %>
         <div class="col-md-12">
@@ -24,11 +10,9 @@
     </div>
   
       <% unless posts.count == 0 %>
-      <h4 class="mt-3">投稿一覧</h4>
+      <h4 class="mt-3"><%= user.name %>さんの投稿一覧</h4>
       <div class="row">
-      <% @posts.each do |post| %>
-        <% if post.is_active == false %>
-        <% if post.draft_status == false %>
+      <% posts.each do |post| %>
         <div class="col-md-3">
           <div class="l-wrapper_01 mt-3">
             <article class="card_01 pb-3">
@@ -44,8 +28,18 @@
                         </div>
                         <div class="card__body_01">
                              <p class="card__title_01"><%= post.name.truncate(15) %></p>
-                            <p class="card__text2_01"><%= post.get_category_name.truncate(15) %></p>
-                            <p class="card__text2_01"><%= post.place.truncate(15) %></p>
+                            <p class="card__text2_01 center"><%= post.get_category_name.truncate(15) %></p>
+                            <p class="card__text2_01 center"><%= post.place.truncate(15) %></p>
+                            <p class="card__text2_01 center">
+                                <% if post.tags.count == 0 %>
+                                    タグなし
+                                <% else %>
+                                    <% post.tags.each do |tag| %>
+                                        <%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %><br>
+                                    <% end %>
+                                <% end %>
+                            </p>
+                            <p class="card__text2_01 center"><%= post.explanation.truncate(15) %></p>
                             <p class="card__text2_01">投稿者: <%= link_to post.user.name.truncate(15), user_path(post.user.id) %></p>
                             <p class="card__text2_01"><%= post.created_at.strftime('%Y/%m/%d') %></p>
                         </div>
@@ -60,9 +54,10 @@
             </article>
           </div>
         </div>
-            <% end %>
-            <% end %>
-            <% end %>
+      <% end %>
+      </div>
+      <div class="row">
+        <%= paginate posts %>
       </div>
   <% end %>
 </div>
