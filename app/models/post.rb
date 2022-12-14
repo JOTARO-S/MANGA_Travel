@@ -45,7 +45,9 @@ class Post < ApplicationRecord
       @post = Post.where("name LIKE?", "%#{word}%")
   end
   
-  validates :name, length: { maximum: 30 }
+  validates :name, length: { maximum: 30 }, presence: true
+  validates :place, length: { maximum: 30 }, presence: true
   validates :explanation, length: { maximum: 255 }
+  
     
 end

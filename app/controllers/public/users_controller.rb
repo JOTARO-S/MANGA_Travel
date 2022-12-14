@@ -4,12 +4,12 @@ class Public::UsersController < ApplicationController
 
     
     def index
-      @users = User.all
+      @users = User.where(is_deleted: false).page(params[:page]).per(12)
     end
     
     def show
       @user = User.find(params[:id])
-      @posts = @user.posts
+      @posts = @user.posts.where(is_active: false, draft_status: false).page(params[:page]).per(8)
     end
     
     def edit
@@ -44,10 +44,5 @@ private
       params.require(:user).permit(:email, :name, :explanation, :user_image)
     end
     
-    def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-    end
-    end
+    
 end

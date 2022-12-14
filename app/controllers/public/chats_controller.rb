@@ -6,7 +6,7 @@ class Public::ChatsController < ApplicationController
   end
 
   def index
-    @chats = Chat.all
+    @chats = Chat.all.page(params[:page]).per(8)
   end
 
   def show

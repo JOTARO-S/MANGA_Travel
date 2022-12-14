@@ -10,19 +10,31 @@
 	          <div class="pl-2"><%= @user.explanation %></div>
 
 	          <div class="table-title pl-2">投稿数</div>
-	          <div class="pl-2"><%= @user.posts.count %></div>
+	          <div class="pl-2"><%= @user.posts.where(is_active: false, draft_status: false).count %></div>
 
-　
-　    <% if @user == current_user %>
-　    <% if @user.name != "guestuser" %>
         <div class='row'>
-          <%= link_to "ユーザー編集",edit_user_path(@user), class: "btn btn-outline-secondary btn-block"%>
+          <% if @user == current_user %>
+　          <% if @user.name != "guestuser" %>
+　          <div class="col-12">
+              <%= link_to "ユーザー編集",edit_user_path(@user), class: "btn btn-outline-secondary btn-block"%>
+            </div>
+            <div class="col-12 mt-3">
+              <%= link_to "ブックマーク一覧",bookmarks_path, class: "btn btn-outline-secondary btn-block" %>
+            </div>
+            <div class="col-12 mt-3">
+              <%= link_to "下書き一覧",draft_path, class: "btn btn-outline-secondary btn-block" %>
+            </div>
+            <% end %>
+          <% else %>
+          <div class="col-12 mt-3">
+            <%= link_to "フォローする",root_path, class: "btn btn-outline-secondary btn-block"%>
+          </div>
+          <% end %>
+          
         </div>
-      <% end %>
-      <% end %>
     </div>
     
-    <%= render 'public/posts/index', posts: @posts %>
+    <%= render 'public/posts/index', { user: @user, posts: @posts } %>
     
   </div>
 </div>

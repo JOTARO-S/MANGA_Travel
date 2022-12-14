@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
   
   def index
     @category = Category.new
-    @categories = Category.all
+    @categories = Category.all.page(params[:page]).per(20)
   end
 
   def edit
@@ -15,7 +15,7 @@ class Admin::CategoriesController < ApplicationController
       if @category.save
         redirect_to admin_categories_path
       else
-        @categories = Category.all
+        @categories = Category.all.page(params[:page]).per(20)
         render :index
       end
   end

@@ -2,7 +2,7 @@ class Public::BookmarksController < ApplicationController
  before_action :authenticate_user!
  
  def index
-  @bookmarks = current_user.bookmarks.includes(:user).order(created_at: :desc)
+  @bookmarks = current_user.bookmarks.includes(:user).order(created_at: :desc).page(params[:page]).per(8)
  end
   
  def create

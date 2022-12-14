@@ -1,5 +1,6 @@
 <div class="container p-3">
   <div class="row">
+    <%= render "public/shared/error_messages", resource: resource %>
     <div class="col-md-6 mt-1 mx-auto">
       
       <div class="p-2" style="background-color: #444;">
@@ -8,7 +9,6 @@
       
       <div class="p-2" style="background-color: #FFF;">
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
   
       <div class="field mt-3">
         <%= f.label "ニックネーム（20文字以内）" %><br />

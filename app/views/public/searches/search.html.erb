@@ -1,10 +1,10 @@
   <% if @range == "ユーザー検索" %>
   
-  <%= render "public/searches/search_user", { word: @word, users: @users } %>
+  <%= render "public/searches/search_user", { word: @word, users: @users, search: @search } %>
     
   <% else %>
   
-  <%= render "public/searches/search_post", { word: @word, posts: @posts } %>
+  <%= render "public/searches/search_post", { word: @word, posts: @posts, search: @search, search_params: @search_params  } %>
     
   <% end %>
   

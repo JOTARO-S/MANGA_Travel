@@ -16,8 +16,6 @@
               </thead>
               <tbody>
                 <% @chats.each do |chat| %>
-                 <% if chat.is_active == false %>
-                 <% if chat.draft_status == false %>
                   <tr>
                     <td><%= chat.title.truncate(15) %></td>
                     <td><%= link_to chat.user.name.truncate(15), user_path(chat.user.id) %></td>
@@ -25,8 +23,6 @@
                      <%= render "public/bookmarks/bookmark-btn", chat: chat %></div>
                     </td>
                   </tr>
-                 <% end %>
-                 <% end %>  
                 <% end %>
               </tbody>
             </table>
