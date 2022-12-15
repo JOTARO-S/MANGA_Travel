@@ -32,6 +32,7 @@
                             </p>
                             <p class="card__text2_01 center"><%= bookmark.post.explanation.truncate(15) %></p>
                             <p class="card__text2_01">投稿者: <%= link_to bookmark.post.user.name.truncate(15), user_path(bookmark.post.user.id) %></p>
+                            <p class="card__text2_01">コメント数:<%= bookmark.post.comments.count %></p>
                             <p class="card__text2_01"><%= bookmark.post.created_at.strftime('%Y/%m/%d') %></p>
                         </div>
                         <div class="card-footer_01">

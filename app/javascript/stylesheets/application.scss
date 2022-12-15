@@ -8,7 +8,17 @@
 }
 
 main {
-    background-color: #E7E7E7;
+  background-color: #E7E7E7;
+  padding-top: 100px;
+  padding-bottom: 150px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 10000;
 }
 
 header li {
@@ -16,8 +26,86 @@ header li {
     margin-right: 14px;
 }
 
+.navbar-toggler{
+  position: relative;/*ボタン内側の基点となるためrelativeを指定*/
+  background:#444;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+  border-radius: 5px;
+}
+
+/*ボタン内側*/
+.navbar-toggler span{
+    display: inline-block;
+    transition: all .4s;/*アニメーションの設定*/
+    position: absolute;
+    left: 14px;
+    height: 2px;
+    border-radius: 5px;
+  background: #fff;
+    width: 45%;
+  }
+
+
+.navbar-toggler span:nth-of-type(1) {
+  top:13px; 
+}
+
+.navbar-toggler span:nth-of-type(2) {
+  top:19px;
+}
+
+.navbar-toggler span:nth-of-type(3) {
+  top:25px;
+}
+
+.navbar-toggler span:nth-of-type(3)::after {
+  content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+  position: absolute;
+  top:5px;
+  left:-2px;
+  color: #fff;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+/*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+
+.navbar-toggler.active span:nth-of-type(1) {
+    top: 14px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.navbar-toggler.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.active span:nth-of-type(3){
+    top: 26px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+.navbar-toggler.active span:nth-of-type(3)::after {
+  content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+    transform: translateY(0) rotate(-45deg);
+  top:5px;
+  left:4px;
+}
 
 // ---------- footer ---------- //
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 10000;
+}
 
 footer ul {
     list-style: none;
@@ -31,6 +119,24 @@ footer li {
 
 .footer {
     text-align: center;
+}
+
+#page-top a{
+  background:#444;
+  color:#fff;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  padding:20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  border-radius: 40px;
+}
+
+#page-top a:hover{
+  background: #777;
 }
 
 // ---------- homes ---------- //
