@@ -1,14 +1,14 @@
 <footer class="bg-light">
-  <p id="page-top"><%= link_to "Page Top", "data-turbolinks": false %></p> 
+  <p id="page-top"><%= link_to "Page Top", {}, "data-turbolinks": false %></p> 
   <div class="container pt-4">
   	<div class="row">
       <div class="footer mx-auto">	
     	  <ul class="">
-    	   <li><%= link_to "トップ", root_path, class: "nav-link" %></li>
-    	   <li><%= link_to "ヘルプ", help_path, class: "nav-link" %></li>
-    	   <li><%= link_to "利用規約", terms_path, class: "nav-link" %></li>
-    	   <li><%= link_to "プライバシーポリシー", privacy_path, class: "nav-link" %></li>
-    	   <li><%= link_to "お問い合わせ", inquiry_path, class: "nav-link" %></li>
+    	   <li><%= link_to "トップ", root_path, "data-turbolinks": false, class: "nav-link" %></li>
+    	   <li><%= link_to "ヘルプ", help_path, "data-turbolinks": false, class: "nav-link" %></li>
+    	   <li><%= link_to "利用規約", terms_path, "data-turbolinks": false, class: "nav-link" %></li>
+    	   <li><%= link_to "プライバシーポリシー", privacy_path, "data-turbolinks": false, class: "nav-link" %></li>
+    	   <li><%= link_to "お問い合わせ", inquiry_path, "data-turbolinks": false, class: "nav-link" %></li>
     	  </ul>
     	  <p>Copyright© </p>
     	</div>
