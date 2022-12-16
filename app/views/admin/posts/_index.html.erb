@@ -26,7 +26,7 @@
                       <% end %>
                     </td>
                     <td><%= link_to post.get_category_name, post_path(post) %></td>
-                    <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-success" %></td>
+                    <td><%= link_to "詳細", admin_post_path(post), "data-turbolinks": false, class: "btn btn-success" %></td>
                     <td>
                       <% if post.is_active == true %>
                         公開停止中

@@ -1,8 +1,11 @@
 <header>
   <nav class="navbar navbar-expand-lg nav-light bg-light">
     <div class="container">
-
-          <%= link_to root_path , "data-turbolinks": false do %><%= image_tag "MANGATravel-logo.png", :size => "180x60" %><% end %>
+          <% if admin_signed_in? %>
+          <%= link_to admin_posts_path , "data-turbolinks": false do %><%= image_tag "MANGATravel-logo.png", :size => "180x60" %><% end %>
+          <% else %>
+            <%= link_to root_path , "data-turbolinks": false do %><%= image_tag "MANGATravel-logo.png", :size => "180x60" %><% end %>
+          <% end %>
           <% if user_signed_in? %>
           <div>
             ログイン中

@@ -26,7 +26,7 @@
                     <td><%= post.get_category_name %></td>
                     <td><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
                     <td><%= post.comments.count %></td>
-                    <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-secondary" %></td>
+                    <td><%= link_to "詳細", admin_post_path(post), "data-turbolinks": false, class: "btn btn-secondary" %></td>
                     <td>
                       <% if post.is_active %>
                       非公開

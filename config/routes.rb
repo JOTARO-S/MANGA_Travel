@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   namespace :admin do
-    root to: "homes#top"
     get "comments" => "comments#index", as: "comments"
     resources :users, except: [:new, :edit, :create, :destroy]
     resources :posts, except: [:new, :create] do
