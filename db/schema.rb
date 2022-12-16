@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
-    t.string "message", null: false
+    t.string "explanation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.string "name", null: false
-    t.string "place"
-    t.text "explanation", null: false
+    t.string "place", null: false
+    t.text "explanation"
     t.boolean "is_active", default: false, null: false
     t.boolean "draft_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

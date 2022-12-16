@@ -27,7 +27,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resources :tags, only: [:create, :destroy]
     end
-    resources :chats, except: [:edit, :update]
+    resources :chats, except: [:edit, :update] do
+      resource :user_chats, only: [:create, :destroy]
+    end
   end
 # 顧客用
 devise_for :user, controllers: {

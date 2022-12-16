@@ -10,16 +10,13 @@ class Public::ChatsController < ApplicationController
   end
 
   def show
-    @chat= chat.find(params[:id])
-    @chat_comment = Comment.new
-    @chat_tags = @chat.tags
+    @chat= Chat.find(params[:id])
+    @chat_message = Comment.new
   end
   
   def create
     @chat = current_user.chats.new(chat_params)
-    tag_list = params[:chat][:tag_name].split(nil)
       if @chat.save
-        @chat.save_tag(tag_list)
         redirect_to chat_path(@chat.id)
       else
       render :new, notice: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください。"
@@ -31,4 +28,10 @@ class Public::ChatsController < ApplicationController
     @chat.destroy
     redirect_to chats_path, notice: "削除しました。"
   end
+end
+
+private
+
+def chat_params
+  params.require(:chat).permit(:title, :explanation)
 end
