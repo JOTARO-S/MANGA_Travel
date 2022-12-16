@@ -8,10 +8,32 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  
-  $(".img01").on('click', function(obj){
-  alert(obj.src);
-  });
+    $("#img01").on('click', function(){
+      var src = $(this).attr('src');
+        $("#main-img").attr("src",src);
+      return false;
+    });
+    $("#img02").on('click', function(){
+      var src = $(this).attr('src');
+        $("#main-img").attr("src",src);
+      return false;
+    });
+    $("#img03").on('click', function(){
+      var src = $(this).attr('src');
+        $("#main-img").attr("src",src);
+      return false;
+    });
+    $("#img04").on('click', function(){
+      var src = $(this).attr('src');
+        $("#main-img").attr("src",src);
+      return false;
+    });
+    $("#img05").on('click', function(){
+      var src = $(this).attr('src');
+        $("#main-img").attr("src",src);
+      return false;
+    });
+
 });
 
 function message() {
