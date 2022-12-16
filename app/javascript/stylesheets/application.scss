@@ -37,7 +37,7 @@ header li {
 
 /*ボタン内側*/
 .navbar-toggler span{
-    display: inline-block;
+    display: block;
     transition: all .4s;/*アニメーションの設定*/
     position: absolute;
     left: 14px;
@@ -61,10 +61,10 @@ header li {
 }
 
 .navbar-toggler span:nth-of-type(3)::after {
-  content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+  content:"MENU";/*3つ目の要素のafterにMenu表示を指定*/
   position: absolute;
   top:5px;
-  left:-2px;
+  left:-5px;
   color: #fff;
   font-size: 0.6rem;
   text-transform: uppercase;
@@ -93,14 +93,13 @@ header li {
 .navbar-toggler.active span:nth-of-type(3)::after {
   content:"Close";/*3つ目の要素のafterにClose表示を指定*/
     transform: translateY(0) rotate(-45deg);
-  top:5px;
-  left:4px;
+  top:6px;
+  left:-2px;
 }
 
 // ---------- footer ---------- //
 
 footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   height: 100px;
@@ -121,18 +120,23 @@ footer li {
     text-align: center;
 }
 
-#page-top a{
+#page-top a {
   background:#444;
+  display: block;
+  opacity: 0.5;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  z-index: 10001;
+  border-radius: 40px;
+  padding:20px;
   color:#fff;
   text-align: center;
-  display: block;
   text-decoration: none;
-  padding:20px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.8rem;
   transition: all 0.3s;
-  border-radius: 40px;
 }
 
 #page-top a:hover{
@@ -141,25 +145,76 @@ footer li {
 
 // ---------- homes ---------- //
 
-.top-list {
+#top-list {
     text-align: center;
 }
 
-.top-list ul {
+#top-list ul {
     list-style: none;
     display: flex;   
 }
 
-.top-list li {
+#top-list li {
     background-color: rgba(255,255,255,0.5);
     border-radius: 40px;
     margin-right: 5px;
     
 }
 
-.top-list li :hover{
+#top-list li :hover{
     background-color: rgba(0,0,255,0.1);
     border-radius: 40px;
+}
+
+.anchor {
+    display: block;
+    padding-top: 80px;
+    margin-top: -80px; 
+}
+
+.top-footer ul {
+    list-style: none;
+    display: flex;
+}
+
+.top-footer li {
+    font-size: 15px;
+    margin-right: 14px;    
+}
+
+.top-footer {
+    text-align: left;
+}
+
+.top-footer-img {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.page-down a {
+  height: 150px;
+  width: 150px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  background:#444;
+  display: block;
+  opacity: 0.5;
+  font-size: 3rem;
+  z-index: 10001;
+  border-radius: 150px;
+  padding: 20px;
+  color:#fff;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+}
+
+.page-down a:hover{
+  background: #777;
 }
 
 // ---------- users ---------- //
@@ -376,4 +431,23 @@ input[type="text"] {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+// ---------- errorメッセージ ---------- //
+
+#error_explanation {
+  background-color: #FFF;
+}
+
+#error_explanation h3 {
+  background-color: #444;
+
+}
+
+#error_explanation ul {
+  list-style: none;
+}
+
+#error_explanation li {
+  margin-top: 10px;
 }

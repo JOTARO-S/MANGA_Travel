@@ -34,6 +34,7 @@ class Public::PostsController < ApplicationController
   def update
     #postのidを取得
     @post= Post.find(params[:id])
+    @post.draft_status = false
     #入力されたタグの受け取り
     tag_list = params[:post][:tag_name].split(nil)
     if @post.update(post_params)

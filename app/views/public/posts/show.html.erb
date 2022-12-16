@@ -26,15 +26,24 @@
  
      <div class="row p-4">
         <div class="col-md-6">
-         <% if @post.post_image.attached? %>
-          <% @post.post_image.each do |image| %>
-            <%= image_tag(image, width:100, class: "") %>
-          <% end %>
-         <% end %> 
-         <% unless @post.post_image.attached? %>
-         <%= image_tag "no_image.jpg" %>
-         <% end %>
-        </div>
+         <div class="">
+           <% if @post.post_image.attached? %>
+            <%= image_tag(@post.post_image.first, width:350, class: "centerpost ex-img") %>
+           <% end %>
+           <% unless @post.post_image.attached? %>
+            <%= image_tag "no_image.jpg" %>
+           <% end %>
+          </div>
+          <div class="">
+           <% if @post.post_image.attached? %>
+            <% @post.post_image.each_with_index do |image, i| %>
+             <%= image_tag(image, width:100, class: "img img0#{i+1}" ) %>
+            <% end %>
+           <% end %> 
+           
+            
+          </div>
+         </div>
         <div class="col-md-6">
          <table class="table table-bordered">
           <tbody>

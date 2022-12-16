@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "help" => "homes#help"
     get "privacy" => "homes#privacy"
     get "terms" => "homes#terms"
+    get "inquiry" => "homes#inquiry"
     get "search" => "searches#search"
     get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
