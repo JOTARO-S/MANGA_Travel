@@ -33,7 +33,6 @@ $(document).ready(function () {
         $("#main-img").attr("src",src);
       return false;
     });
-
 });
 
 function message() {

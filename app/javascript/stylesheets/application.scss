@@ -1,10 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
 
 
 *{
-  font-family: 'Kiwi Maru', serif;
+  font-family: 'DotGothic16', sans-serif;
 }
 
 main {
@@ -102,7 +103,6 @@ header li {
 footer {
   bottom: 0;
   width: 100%;
-  height: 100px;
   z-index: 10000;
 }
 
@@ -201,9 +201,9 @@ footer li {
   background:#444;
   display: block;
   opacity: 0.5;
-  font-size: 3rem;
+  font-size: 1rem;
   z-index: 10001;
-  border-radius: 150px;
+  border-radius: 40px;
   padding: 20px;
   color:#fff;
   text-align: center;
@@ -244,7 +244,6 @@ footer li {
 .table-title {
     background-color :#444;
     color: #f8f9fa;
-    
 }
 
 // ---------- posts ---------- //
@@ -268,6 +267,14 @@ footer li {
   border-radius: 40px;
   margin: 10px auto;
   padding: 10px;
+}
+
+#img01, #img02, #img03, #img04, #img05 {
+  border:1px solid #000;
+}
+
+#img01:hover, #img02:hover, #img03:hover, #img04:hover, #img05:hover {
+  border:2px solid #444;
 }
 
 // ---------- btnレイアウト ---------- //

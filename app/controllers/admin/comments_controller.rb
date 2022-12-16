@@ -5,6 +5,12 @@ class Admin::CommentsController < ApplicationController
  end
     
  def create
+    post = Post.find(params[:post_id])
+     comment = Comment.new(post_comment_params)
+     comment.user_id = 0
+     comment.post_id = post.id
+     comment.save
+    redirect_to admin_post_path(post)
  end
  
  def destroy
@@ -13,12 +19,12 @@ class Admin::CommentsController < ApplicationController
  end
  
  def update
-  post = Post.find(params[:post_id])
-  comment = Comment.find(params[:id])
-  comment.comment_content = "不適切なコメントの為、削除されました。"
-  if comment.save
-  redirect_to admin_post_path(post), notice: "コメントを削除しました。"
-  end
+   post = Post.find(params[:post_id])
+   comment = Comment.find(params[:id])
+   comment.comment_content = "不適切なコメントの為、削除されました。"
+   if comment.save
+    redirect_to admin_post_path(post), notice: "コメントを削除しました。"
+   end
  end
  
  private
