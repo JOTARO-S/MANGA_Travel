@@ -1,0 +1,17 @@
+<div class="row p-3">
+   <% post.comments.each do |post_comment| %>
+    <div class="col-md-4 offset-1 mt-1">
+     <%= link_to(post_comment.user) do %>
+      <%= image_tag post_comment.user.get_user_image, size:"100x100" %><br>
+      <%= post_comment.user.name %>
+     <% end %>
+    </div>
+    <div class="col-md-7">
+     <%= post_comment.comment_content %><br>
+     <%= post_comment.created_at.to_s(:datetime_jp) %>
+     <% if post_comment.user == current_user %>
+      <%= link_to "Destroy", post_comment_path(post_comment.post,post_comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger"%>
+     <% end %>
+    </div>
+    <% end %>
+  </div>

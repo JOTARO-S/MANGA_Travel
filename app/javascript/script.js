@@ -7,6 +7,7 @@ $(document).ready(function () {
   });
 });
 
+//画像切り替え機能
 $(document).ready(function () {
     $("#img01").on('click', function(){
       var src = $(this).attr('src');

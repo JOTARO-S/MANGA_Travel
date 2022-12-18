@@ -10,8 +10,8 @@ class Public::ChatsController < ApplicationController
   end
 
   def show
-    @chat= Chat.find(params[:id])
-    @chat_message = Comment.new
+    @chat = Chat.find(params[:id])
+    @chat_message = Message.new
   end
   
   def create
@@ -24,7 +24,7 @@ class Public::ChatsController < ApplicationController
   end
   
   def destroy
-    @chat= chat.find(params[:id])
+    @chat = Chat.find(params[:id])
     @chat.destroy
     redirect_to chats_path, notice: "削除しました。"
   end

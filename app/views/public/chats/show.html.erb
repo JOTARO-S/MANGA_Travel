@@ -28,31 +28,7 @@
          </table>
         </div>
   </div>
-  <div class="row p-3">
-    <h3>チャット</h3>
-    <div class="col-md-12">
-      <%= form_with model: [@chat, @chat_message] do |form| %>
-      <%= form.text_area :message, rows: '5', class: "form-control" %>
-      <%= form.submit "送信", :class=> "mt-1" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row p-3">
-    <% @chat.user_chats.each do |message| %>
-    <div class="col-md-4 offset-1 mt-1">
-        <%= link_to(message.user) do %>
-          <%= image_tag user_chat.user.get_user_image, size:"100x100" %><br>
-          <%= user_chat.user.name %>
-        <% end %>
-    </div>
-    <div class="col-md-7">
-      <%= user_chat.comment_content %><br>
-      <%= user_chat.created_at.to_s(:datetime_jp) %>
-        <% if user_chat.user == current_user %>
-          <%= link_to 'Destroy', chat_user_chats_path(user_chat.chat,user_chat), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>
-        <% end %>
-    </div>
-    <% end %>
-  </div>
+  <%= render "public/messages/form", { chat: @chat, chat_message: @chat_message } %>
+  <%= render "public/messages/index", { chat: @chat } %>
 </div>
 
