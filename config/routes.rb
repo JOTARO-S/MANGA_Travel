@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   namespace :admin do
-    root to: "homes#top"
     get "comments" => "comments#index", as: "comments"
     resources :users, except: [:new, :edit, :create, :destroy]
     resources :posts, except: [:new, :create] do
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
     get "help" => "homes#help"
     get "privacy" => "homes#privacy"
     get "terms" => "homes#terms"
+    get "inquiry" => "homes#inquiry"
     get "search" => "searches#search"
     get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
@@ -27,7 +27,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resources :tags, only: [:create, :destroy]
     end
-    resources :chats, except: [:edit, :update]
+    resources :chats, except: [:edit, :update] do
+      resource :user_chats, only: [:create, :destroy]
+    end
   end
 # 顧客用
 devise_for :user, controllers: {

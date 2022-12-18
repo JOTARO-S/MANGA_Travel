@@ -31,25 +31,25 @@
   <div class="row p-3">
     <h3>チャット</h3>
     <div class="col-md-12">
-      <%= form_with model: [@chat, @chat_comment] do |form| %>
-      <%= form.text_area :comment_content, rows: '5', class: "form-control" %>
+      <%= form_with model: [@chat, @chat_message] do |form| %>
+      <%= form.text_area :message, rows: '5', class: "form-control" %>
       <%= form.submit "送信", :class=> "mt-1" %>
       <% end %>
     </div>
   </div>
   <div class="row p-3">
-    <% @chat.comments.each do |chat_comment| %>
+    <% @chat.user_chats.each do |message| %>
     <div class="col-md-4 offset-1 mt-1">
-        <%= link_to(chat_comment.user) do %>
-          <%= image_tag chat_comment.user.get_user_image, size:"100x100" %><br>
-          <%= chat_comment.user.name %>
+        <%= link_to(message.user) do %>
+          <%= image_tag user_chat.user.get_user_image, size:"100x100" %><br>
+          <%= user_chat.user.name %>
         <% end %>
     </div>
     <div class="col-md-7">
-      <%= chat_comment.comment_content %><br>
-      <%= chat_comment.created_at.to_s(:datetime_jp) %>
-        <% if chat_comment.user == current_user %>
-          <%= link_to 'Destroy', chat_comment_path(chat_comment.chat,chat_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>
+      <%= user_chat.comment_content %><br>
+      <%= user_chat.created_at.to_s(:datetime_jp) %>
+        <% if user_chat.user == current_user %>
+          <%= link_to 'Destroy', chat_user_chats_path(user_chat.chat,user_chat), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>
         <% end %>
     </div>
     <% end %>

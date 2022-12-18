@@ -2,9 +2,9 @@
   <div class='row'>
     <div class='col-md-12'>
       <h2>Users</h2>
-        <table class='table'>
-          <thead>
-                <tr>
+        <table class='table table-hover'>
+          <thead  style="background-color: #444">
+                <tr class="text-light">
                   <th>ID</th>
                   <th>プロフィール画像</th>
                   <th>ユーザー名</th>
@@ -14,7 +14,7 @@
                   <th></th>
                 </tr>
               </thead>
-          <tbody>
+          <tbody style="background-color: rgba(255,255,255,0.5)">
             <% @users.each do |user| %>
               <tr>
                 <td><%= user.id %></td>
@@ -29,7 +29,7 @@
                   有効
                   <% end %>
                 </td>
-                <td><%= link_to '詳細ページ', admin_user_path(user) %></td>
+                <td><%= link_to '詳細', admin_user_path(user), class: "btn btn-secondary" %></td>
               </tr>
             <% end %>
          </tbody>

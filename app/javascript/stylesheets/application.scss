@@ -1,14 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
 
 
 *{
-  font-family: 'Kiwi Maru', serif;
+  font-family: 'DotGothic16', sans-serif;
 }
 
 main {
-    background-color: #E7E7E7;
+  background-color: #E7E7E7;
+  padding-top: 100px;
+  padding-bottom: 150px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 10000;
 }
 
 header li {
@@ -16,8 +27,84 @@ header li {
     margin-right: 14px;
 }
 
+.navbar-toggler{
+  position: relative;/*ボタン内側の基点となるためrelativeを指定*/
+  background:#444;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+  border-radius: 5px;
+}
+
+/*ボタン内側*/
+.navbar-toggler span{
+    display: block;
+    transition: all .4s;/*アニメーションの設定*/
+    position: absolute;
+    left: 14px;
+    height: 2px;
+    border-radius: 5px;
+  background: #fff;
+    width: 45%;
+  }
+
+
+.navbar-toggler span:nth-of-type(1) {
+  top:13px; 
+}
+
+.navbar-toggler span:nth-of-type(2) {
+  top:19px;
+}
+
+.navbar-toggler span:nth-of-type(3) {
+  top:25px;
+}
+
+.navbar-toggler span:nth-of-type(3)::after {
+  content:"MENU";/*3つ目の要素のafterにMenu表示を指定*/
+  position: absolute;
+  top:5px;
+  left:-5px;
+  color: #fff;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+/*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+
+.navbar-toggler.active span:nth-of-type(1) {
+    top: 14px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.navbar-toggler.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.active span:nth-of-type(3){
+    top: 26px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+.navbar-toggler.active span:nth-of-type(3)::after {
+  content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+    transform: translateY(0) rotate(-45deg);
+  top:6px;
+  left:-2px;
+}
 
 // ---------- footer ---------- //
+
+footer {
+  bottom: 0;
+  width: 100%;
+  z-index: 10000;
+}
 
 footer ul {
     list-style: none;
@@ -33,27 +120,101 @@ footer li {
     text-align: center;
 }
 
+#page-top a {
+  background:#444;
+  display: block;
+  opacity: 0.5;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  z-index: 10001;
+  border-radius: 40px;
+  padding:20px;
+  color:#fff;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+}
+
+#page-top a:hover{
+  background: #777;
+}
+
 // ---------- homes ---------- //
 
-.top-list {
+#top-list {
     text-align: center;
 }
 
-.top-list ul {
+#top-list ul {
     list-style: none;
     display: flex;   
 }
 
-.top-list li {
+#top-list li {
     background-color: rgba(255,255,255,0.5);
     border-radius: 40px;
     margin-right: 5px;
     
 }
 
-.top-list li :hover{
+#top-list li :hover{
     background-color: rgba(0,0,255,0.1);
     border-radius: 40px;
+}
+
+.anchor {
+    display: block;
+    padding-top: 80px;
+    margin-top: -80px; 
+}
+
+.top-footer ul {
+    list-style: none;
+    display: flex;
+}
+
+.top-footer li {
+    font-size: 15px;
+    margin-right: 14px;    
+}
+
+.top-footer {
+    text-align: left;
+}
+
+.top-footer-img {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.page-down a {
+  height: 150px;
+  width: 150px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  background:#444;
+  display: block;
+  opacity: 0.5;
+  font-size: 1rem;
+  z-index: 10001;
+  border-radius: 40px;
+  padding: 20px;
+  color:#fff;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+}
+
+.page-down a:hover{
+  background: #777;
 }
 
 // ---------- users ---------- //
@@ -83,7 +244,6 @@ footer li {
 .table-title {
     background-color :#444;
     color: #f8f9fa;
-    
 }
 
 // ---------- posts ---------- //
@@ -100,6 +260,21 @@ footer li {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.left-contents {
+  background-color: #FFF;
+  border-radius: 40px;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+#img01, #img02, #img03, #img04, #img05 {
+  border:1px solid #000;
+}
+
+#img01:hover, #img02:hover, #img03:hover, #img04:hover, #img05:hover {
+  border:2px solid #444;
 }
 
 // ---------- btnレイアウト ---------- //
@@ -270,4 +445,23 @@ input[type="text"] {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+// ---------- errorメッセージ ---------- //
+
+#error_explanation {
+  background-color: #FFF;
+}
+
+#error_explanation h3 {
+  background-color: #444;
+
+}
+
+#error_explanation ul {
+  list-style: none;
+}
+
+#error_explanation li {
+  margin-top: 10px;
 }

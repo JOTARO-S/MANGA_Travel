@@ -45,9 +45,36 @@ class Post < ApplicationRecord
       @post = Post.where("name LIKE?", "%#{word}%")
   end
   
-  validates :name, length: { maximum: 30 }, presence: true
-  validates :place, length: { maximum: 30 }, presence: true
-  validates :explanation, length: { maximum: 255 }
   
+  # バリデーション
+  
+  validate :add_error_posts
+  
+  def add_error_posts
     
+    if name.blank?
+      
+      errors[:base] << "タイトルを入力してください。"
+    end
+    if name.length > 30
+      errors[:base] << "タイトルは30文字以内で入力してください。"
+    end
+    if category.blank?
+      errors[:base] << "所在地を選択してください。"
+    end
+    if place.blank?
+      errors[:base] << "住所や場所の名前を入力してください。"
+    end
+    if place.length > 30
+      errors[:base] << "住所や場所の名前は30文字以内で入力してください。"
+    end
+    if explanation.length > 255
+      errors[:base] << "説明は255文字以内で入力してください。"
+    end
+    if post_image.length > 4
+      errors[:base] << "画像は最大4枚まで可能です。"
+    end
+    
+  end
+  
 end

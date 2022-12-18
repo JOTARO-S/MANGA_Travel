@@ -1,18 +1,19 @@
 <div class="container">
     <div class="row mt-3">
-            <table class='table table-hover table-inverse mt-3'>
-              <thead>
-                <tr>
-                  <th>タイトル</th>
-                  <th>住所・施設名</th>
-                  <th>タグ</th>
-                  <th>所在地</th>
-                  <th>ユーザー名</th>
-                  <th></th>
-                  <th>ステータス</th>
+            <table class='table table-hover mt-3'>
+              <thead style="background-color: #444">
+                <tr class="text-light">
+                  <th width="200">タイトル</th>
+                  <th width="150">住所・施設名</th>
+                  <th width="150">タグ</th>
+                  <th width="100">所在地</th>
+                  <th width="150">ユーザー名</th>
+                  <th width="150">コメント数</th>
+                  <th width="100"></th>
+                  <th width="100">ステータス</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style="background-color: rgba(255,255,255,0.5)">
                 <% @posts.each do |post| %>
                   <tr>
                     <td><%= post.name %></td>
@@ -24,7 +25,8 @@
                     </td>
                     <td><%= post.get_category_name %></td>
                     <td><%= link_to post.user.name, admin_user_path(post.user.id) %></td>
-                    <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-success" %></td>
+                    <td><%= post.comments.count %></td>
+                    <td><%= link_to "詳細", admin_post_path(post), "data-turbolinks": false, class: "btn btn-secondary" %></td>
                     <td>
                       <% if post.is_active %>
                       非公開

@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_bookmarks_on_post_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -69,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
-    t.string "message", null: false
+    t.string "explanation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,8 +98,8 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.string "name", null: false
-    t.string "place"
-    t.text "explanation", null: false
+    t.string "place", null: false
+    t.text "explanation"
     t.boolean "is_active", default: false, null: false
     t.boolean "draft_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -135,6 +137,8 @@ ActiveRecord::Schema.define(version: 2022_12_03_105552) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "posts"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
 end

@@ -1,108 +1,105 @@
 <div class="container p-2" style="background-color:rgba(77,77,77,0.3);">
- <div class="row p-2">
-    <h2 class="col-md-6">
-       投稿詳細
-         <% if @post.user == current_user %>
-          <% if @post.is_active == true %>
-           <%= link_to "（公開停止中）", edit_post_path(@post), "data-turbolinks": false %>
-          <% end %>
-          <% if @post.draft_status == true %>
-           <%= link_to "（下書き）", edit_post_path(@post), "data-turbolinks": false %>
-          <% end %>
-         <% end %>
-    </h2>
-    <% if @post.is_active == false %>
-    <% if @post.draft_status == false %>
-    <div class="bookmark_btn_<%= @post.id %> col-md-2">
-     <%= render "public/bookmarks/bookmark-btn", post: @post %>
-    </div>
-    <% end %>
-    <% end %>
-     <% if @post.user == current_user %>
-       <%= link_to "編集", edit_post_path(@post), "data-turbolinks": false, class: "btn btn-success col-md-1" %>
-       <%= link_to "削除", post_path(@post), "data-turbolinks": false, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger col-md-1 ml-3"%>
+ <div class="row p-4">
+  <div class="col-md-6">
+   <div class="" style="display: flex">
+    <% if @post.user == current_user %>
+     <% if @post.is_active == true %>
+      <%= link_to "（公開停止中）", edit_post_path(@post), "data-turbolinks": false, class: "mr-5" %>
      <% end %>
- </div>
-     <div class="row p-4">
-        <div class="col-md-6">
-         <% if @post.post_image.attached? %>
-          <% @post.post_image.each do |image| %>
-            <%= image_tag(image, width:100, class: "") %>
-          <% end %>
-         <% end %> 
-         <% unless @post.post_image.attached? %>
-         <%= image_tag "no_image.jpg" %>
-         <% end %>
-        </div>
-        <div class="col-md-6">
-         <table class="table table-bordered">
-          <tbody>
-            <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">Title</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.name %></td>
-            </tr>
-            <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">住所/施設名</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.place %></td>
-           </tr>
-           <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">所在地名</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.get_category_name %></td>
-           </tr>
-           <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">タグ</td>
-             <td style="background-color:rgba(255,255,255,0.5);">
-              <% @post_tags.each do |tag| %>
-              <%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %>
-              <% end %>
-             </td>
-           </tr>
-           <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">説明</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.explanation %></td>
-           </tr>
-           <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">ユーザー</td>
-             <td style="background-color:rgba(255,255,255,0.5);">
-                 <%= link_to @post.user.name, user_path(@post.user_id) %>
-             </td>
-           </tr>
-           <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">投稿日時</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.created_at.to_s(:datetime_jp) %></td>
-           </tr>
-           <tr>
-             <td class="text-white" style="background-color:rgba(130,0,0,0.8);">更新日時</td>
-             <td style="background-color:rgba(255,255,255,0.5);"><%= @post.updated_at.to_s(:datetime_jp) %></td>
-           </tr>
-          </tbody>
-         </table>
-
-        </div>
-  </div>
-  <div class="row p-3">
-    <h3>コメント</h3>
-    <div class="col-md-12">
-      <%= form_with model: [@post, @post_comment] do |form| %>
-      <%= form.text_area :comment_content, rows: "5", class: "form-control" %>
-      <%= form.submit "送信", :class=> "mt-1" %>
+     <% if @post.draft_status == true %>
+      <%= link_to "（下書き）", edit_post_path(@post), "data-turbolinks": false, class: "mr-5" %>
+     <% end %>
+    <% end %>
+     <% if @post.is_active == false %>
+     <% if @post.draft_status == false %>
+      <div class="bookmark_btn_<%= @post.id %>" style="width: 200px">
+       <%= render "public/bookmarks/bookmark-btn", post: @post %>
+      </div>
+     <% end %>
+     <% end %>
+    <div class="">
+     <% if @post.user == current_user %>
+      <%= link_to "編集", edit_post_path(@post), "data-turbolinks": false, class: "btn btn-success" %>
+       <%= link_to "削除", post_path(@post), "data-turbolinks": false, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger ml-2"%>
+     <% end %>
+    </div>
+   </div>
+    <div class="mt-3">
+     <% if @post.post_image.attached? %>
+      <%= image_tag(@post.post_image.first, height:300, width:350, class: "centerpost ex-img", id: "main-img") %>
+     <% end %>
+     <% unless @post.post_image.attached? %>
+      <%= image_tag "no_image.jpg" %>
+     <% end %>
+    </div>
+    <div class="mt-3 mb-3">
+     <% if @post.post_image.attached? %>
+      <div id="img">
+       <% @post.post_image.each_with_index do |image, i| %>
+        <%= image_tag(image, height:80, width:100, class: "img", id: "img0#{i+1}" ) %>
+       <% end %>
+      </div>
+     <% end %> 
+    </div>
+   </div>
+   <div class="col-md-6">
+    <h4 style="">
+     <div class="left-contents" style="font-size: 30px"><%= @post.name %></div>
+     <div class="left-contents" style=""><%= @post.get_category_name %></div>
+     <div class="left-contents" style=""><%= @post.place %></div>
+    </h4>
+     <div class="text-white" style="background-color: #444;">説明</div>
+     <div style="background-color:rgba(255,255,255,0.5);">
+      <% if @post.explanation.empty? %>
+       なし
+      <% else %>
+       <%= @post.explanation %>
       <% end %>
+     </div>
+     <div class="mt-3">
+      <div class="text-white" style="background-color: #444;">タグ</div>
+       <div style="background-color:rgba(255,255,255,0.5);">
+        <% if @post_tags.count == 0 %>
+         <div>なし</div>
+        <% else %>
+         <% @post_tags.each do |tag| %>
+          <div><%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %></div>
+         <% end %>
+        <% end %>
+       </div>
+      </div>
+       <div class="mt-3">
+        <div style="background-color:rgba(255,255,255,0.5);">
+         投稿者:<%= link_to @post.user.name, user_path(@post.user_id) %>
+        </div>
+         <div style="background-color:rgba(255,255,255,0.5);">投稿日時:<%= @post.created_at.to_s(:datetime_jp) %></div>
+         <div style="background-color:rgba(255,255,255,0.5);">更新日時:<%= @post.updated_at.to_s(:datetime_jp) %></div>
+        </div>
     </div>
   </div>
   <div class="row p-3">
-    <% @post.comments.each do |post_comment| %>
+   <h3>コメント</h3>
+    <div class="col-md-12">
+     <%= form_with model: [@post, @post_comment] do |form| %>
+      <%= form.text_area :comment_content, rows: "5", class: "form-control" %>
+      <%= form.submit "コメントを送信", :class=> "btn btn-secondary mt-1" %>
+     <% end %>
+    </div>
+  </div>
+  <div class="row p-3">
+   <% @post.comments.each do |post_comment| %>
     <div class="col-md-4 offset-1 mt-1">
-        <%= link_to(post_comment.user) do %>
-          <%= image_tag post_comment.user.get_user_image, size:"100x100" %><br>
-          <%= post_comment.user.name %>
-        <% end %>
+     <%= link_to(post_comment.user) do %>
+      <%= image_tag post_comment.user.get_user_image, size:"100x100" %><br>
+      <%= post_comment.user.name %>
+     <% end %>
     </div>
     <div class="col-md-7">
-      <%= post_comment.comment_content %><br>
-      <%= post_comment.created_at.to_s(:datetime_jp) %>
-        <% if post_comment.user == current_user %>
-          <%= link_to "Destroy", post_comment_path(post_comment.post,post_comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger"%>
-        <% end %>
+     <%= post_comment.comment_content %><br>
+     <%= post_comment.created_at.to_s(:datetime_jp) %>
+     <% if post_comment.user == current_user %>
+      <%= link_to "Destroy", post_comment_path(post_comment.post,post_comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger"%>
+     <% end %>
     </div>
     <% end %>
   </div>
