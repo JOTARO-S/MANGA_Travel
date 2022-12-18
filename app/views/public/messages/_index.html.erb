@@ -1,0 +1,17 @@
+<div class="row p-3">
+    <% chat.messages.each do |message| %>
+    <div class="col-md-4 offset-1 mt-1">
+        <%= link_to(message.user) do %>
+          <%= image_tag message.user.get_user_image, size:"100x100" %><br>
+          <%= message.user.name %>
+        <% end %>
+    </div>
+    <div class="col-md-7">
+      <%= message.message_content %><br>
+      <%= message.created_at.to_s(:datetime_jp) %>
+        <% if message.user == current_user %>
+          <%= link_to 'Destroy', chat_messages_path(chat_message.chat,chat_message), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>
+        <% end %>
+    </div>
+    <% end %>
+  </div>

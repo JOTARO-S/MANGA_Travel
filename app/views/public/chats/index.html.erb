@@ -14,18 +14,13 @@
                     <article class="card_01 pb-3">
                         <div class="card__body_01">
                              <p class="card__title_01"><%= chat.title.truncate(15) %></p>
-                            <p class="card__text2_01 center"><%= chat.message.truncate(15) %></p>
+                            <p class="card__text2_01 center"><%= chat.explanation.truncate(15) %></p>
                             <p class="card__text2_01">投稿者: <%= link_to chat.user.name.truncate(15), user_path(chat.user.id) %></p>
-                            <p class="card__text2_01">コメント数:<%= chat.messages.count %></p>
-                            <p class="card__text2_01">ブックマーク数:<%= chat.bookmarks.count %></p>
                             <p class="card__text2_01"><%= chat.created_at.strftime('%Y/%m/%d') %></p>
                         </div>
                         <div class="card-footer_01">
                             <p class="card__text_01">
                             <%= link_to "チャット", chat_path(chat), 'data-turbolinks': false, class: "btn btn-secondary button_01 -compact" %>
-                            <div class="bookmark_btn_<%= chat.id %> card__text_01">
-                                <%= render "public/bookmarks/bookmark-btn", chat: chat %>
-                            </div>
                             </p>
                         </div>
                     </article>

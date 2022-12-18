@@ -28,9 +28,10 @@ Rails.application.routes.draw do
       resources :tags, only: [:create, :destroy]
     end
     resources :chats, except: [:edit, :update] do
-      resource :user_chats, only: [:create, :destroy]
+      resource :messages, only: [:create, :destroy]
     end
   end
+  
 # 顧客用
 devise_for :user, controllers: {
   registrations: "public/registrations",

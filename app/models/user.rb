@@ -5,11 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :posts , dependent: :destroy
-  has_many :chats , dependent: :destroy
   has_many :comments , dependent: :destroy
   has_many :bookmarks , dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
-  has_many :user_chats,dependent: :destroy
+  has_many :chats , dependent: :destroy
+  has_many :messages, dependent: :destroy
   
   has_one_attached :user_image
 
