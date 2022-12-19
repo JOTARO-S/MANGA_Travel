@@ -1,6 +1,6 @@
 <div class="container p-3">
   <div class="row">
-    <div class="col-md-6 mt-1 mx-auto">
+    <div class="col-lg-6 col-md-10 mt-1 mx-auto">
       
       <div class="p-2" style="background-color: #444;">
         <h5 class="text-light" style="">ログイン</h3>
@@ -11,12 +11,12 @@
         
       <div class="field">
         <%= f.label "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", autocorrect: "off", autocapitalize: "off", size: " 50 x 30 " %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
       </div>
 
       <div class="field">
         <%= f.label "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password", autocorrect: "off", autocapitalize: "off", size: " 50 x 30 " %>
+        <%= f.password_field :password, autocomplete: "current-password", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
       </div>
 
       <% if devise_mapping.rememberable? %>

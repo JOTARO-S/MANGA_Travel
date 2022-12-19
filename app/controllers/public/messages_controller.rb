@@ -13,7 +13,7 @@ before_action :authenticate_user!
  end
  
  def destroy
-    @message = Message.find(params[:id])
+    @message = Message.find_by(id: params[:id], chat_id: params[:chat_id])
     if @message.destroy
      redirect_to request.referer, alert: "コメントを削除しました"
     else

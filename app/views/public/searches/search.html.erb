@@ -1,6 +1,10 @@
   <% if @range == "ユーザー検索" %>
   
   <%= render "public/searches/search_user", { word: @word, users: @users, search: @search } %>
+  
+  <% elsif @range == "チャット検索" %>
+  
+  <%= render "public/searches/search_chat", { word: @word, chats: @chats, search: @search, search_params: @search_params  } %>
     
   <% else %>
   

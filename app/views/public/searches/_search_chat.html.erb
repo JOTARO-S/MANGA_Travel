@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row pt-3">
+        <%= render "layouts/search", { search: search } %>
+    </div>
+    
+    <div class="row">
+        <p class="pt-4">チャット検索 for "<%= search_params %>"</p>
+    </div>
+
+        <% if chats.empty? %>
+            <div class="row">
+              <h4 class="col-md-12">検索結果はありません。</h4>
+            </div>
+</div>
+            
+        <% else %>
+    
+</div>
+
+<div class="container">
+    <div class="row mt-3">
+            <% chats.each do |chat| %>
+                <div class="l-wrapper_01 mt-3 col-md-3">
+                    <article class="card_01 pb-3">
+                        <div class="card__body_01">
+                             <p class="card__title_01"><%= chat.title.truncate(15) %></p>
+                            <p class="card__text2_01 center"><%= chat.explanation.truncate(15) %></p>
+                            <p class="card__text2_01">投稿者: <%= link_to chat.user.name.truncate(15), user_path(chat.user.id) %></p>
+                            <p class="card__text2_01"><%= chat.created_at.strftime('%Y/%m/%d') %></p>
+                        </div>
+                        <div class="card-footer_01">
+                            <p class="card__text_01">
+                            <%= link_to "チャット", chat_path(chat), 'data-turbolinks': false, class: "btn btn-secondary button_01 -compact" %>
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            <% end %>
+    </div>
+    <div class="row">
+        <%= paginate chats %>
+    </div>
+</div>
+
+<% end %>
+  
+  

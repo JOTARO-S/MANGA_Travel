@@ -4,17 +4,25 @@ class Public::SearchesController < ApplicationController
         @range = params[:range]
         @word = params[:word]
         
-        #ユーザー側の検索機能
+        #ユーザーの検索機能
         if @range == "ユーザー検索"
             
-            
-            if params[:word] == nil
+            if params[:word].empty?
                 @word == "条件なし"
             end
             
             @users = User.where(is_deleted: false).looks(params[:search], params[:word]).page(params[:page]).per(12)
         
-        #投稿側の検索機能    
+        #チャットの検索機能
+        elsif @range == "チャット検索"
+            
+            if params[:word].empty?
+                @word == "条件なし"
+            end
+            
+            @chats = Chat.looks(params[:search], params[:word]).page(params[:page]).per(12)
+        
+        #投稿の検索機能    
         else
             #未入力で検索した場合
             if params[:word].empty? && params[:prefectures].empty? && params[:tag_id].empty?
