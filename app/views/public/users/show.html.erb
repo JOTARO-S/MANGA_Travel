@@ -7,7 +7,13 @@
 	          <div class="pl-2"><%= @user.name %></div>
 
 	          <div class="table-title pl-2">プロフィール</div>
-	          <div class="pl-2"><%= @user.explanation %></div>
+	          <div class="pl-2">
+	            <% if @user.explanation.empty? %>
+	             なし
+	            <% else %>
+	             <%= @user.explanation %>
+	            <% end %>
+	          </div>
 
 	          <div class="table-title pl-2">投稿数</div>
 	          <div class="pl-2"><%= @user.posts.where(is_active: false, draft_status: false).count %></div>
@@ -26,9 +32,8 @@
             </div>
             <% end %>
           <% else %>
-          <div class="col-12 mt-3">
-            <%= link_to "フォローする",root_path, class: "btn btn-outline-secondary btn-block"%>
-          </div>
+            <!-- 要調整 -->
+            <%#<%= render 'public/relationships/relationship', { user: @user } %>
           <% end %>
           
         </div>

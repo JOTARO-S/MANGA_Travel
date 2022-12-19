@@ -1,14 +1,18 @@
 class Post < ApplicationRecord
-    belongs_to :user
-    belongs_to :category
+    belongs_to :user ##ユーザー
+    belongs_to :category ##カテゴリー
+    ## タグ
     has_many :post_tags, dependent: :destroy
     has_many :tags, through: :post_tags
-    has_many :comments, dependent: :destroy
+    has_many :comments, dependent: :destroy ##コメント
+    ## コメント
     has_many :bookmarks, dependent: :destroy
     has_many :bookmark_posts, through: :bookmarks, source: :post
     
+    ##投稿画像
     has_many_attached :post_image
     
+  ##カテゴリー  
   def get_category_id
     Category.find(category_id).id
   end
@@ -17,10 +21,12 @@ class Post < ApplicationRecord
     Category.find(category_id).name
   end
   
+  ##ブックマーク
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
   
+  ##タグ
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -41,13 +47,13 @@ class Post < ApplicationRecord
    end
   end
   
+  ##投稿検索
   def self.looks(search, word)
       @post = Post.where("name LIKE?", "%#{word}%")
   end
   
   
   # バリデーション
-  
   validate :add_error_posts
   
   def add_error_posts
