@@ -241,6 +241,14 @@ footer li {
     outline: solid 2px #444;
 }
 
+.image-content {
+  width: 75%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+
+
 .table-title {
     background-color :#444;
     color: #f8f9fa;
@@ -275,6 +283,16 @@ footer li {
 
 #img01:hover, #img02:hover, #img03:hover, #img04:hover, #img05:hover {
   border:2px solid #444;
+}
+
+.post-images {
+  width: 20%;
+  height: 80px;
+}
+
+.ex-img {
+  height: 300px;
+  width: 80%;
 }
 
 // ---------- btnレイアウト ---------- //

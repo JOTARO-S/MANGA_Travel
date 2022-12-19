@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :tags, only: [:create, :destroy]
     end
     resources :chats, except: [:edit, :update] do
-      resource :messages, only: [:create, :destroy]
+      resources :messages, only: [:create, :destroy]
     end
   end
   
