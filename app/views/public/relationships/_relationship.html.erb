@@ -1,0 +1,7 @@
+<div class="col-12 mt-3">
+    <% if current_user.following?(@user) %>
+        <%= link_to "フォロー解除", relationship_path(current_user.relationships.find_by(follower: @user)), method: :delete, remote: true, class: "btn btn-outline-secondary btn-block" %>
+    <% else %>
+        <%= link_to "フォロー", relationships_path(follower: @user), method: :post, remote: true, class: "btn btn-outline-secondary btn-block" %>
+    <% end %>
+</div>
