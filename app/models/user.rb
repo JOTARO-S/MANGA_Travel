@@ -6,11 +6,6 @@ class User < ApplicationRecord
   ##投稿       
   has_many :posts , dependent: :destroy
   has_many :comments , dependent: :destroy
-  ##フォロー
-#  has_many :relationships, dependent: :destroy
-#  has_many :followings, through: :relationships, source: :follower
-#  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-#  has_many :followers, through: :passive_relationships, source: :user
   ##ブックマーク
   has_many :bookmarks , dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
@@ -39,19 +34,6 @@ class User < ApplicationRecord
   def self.looks(search, word)
       @user = User.where("name LIKE?", "%#{word}%")
   end
-  
-  ## フォロー機能 調整中
-#  def following?(user)
-#    followings.include?(user)
-#  end
-
-#  def follow(user_id)
-#    relationships.create(follower: user_id)
-#  end
-
-#  def unfollow(relationship_id)
-#    relationships.find(relationship_id).destroy!
-#  end
   
   ## ゲスト機能
   def self.guest
