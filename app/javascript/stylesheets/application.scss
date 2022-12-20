@@ -19,6 +19,48 @@ main h4, h2 {
   font-family: 'Mochiy Pop One', sans-serif;
 }
 
+// ---------- select レイアウト ---------- //
+
+select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="text"] {
+
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -70,7 +112,7 @@ header li {
   content:"MENU";/*3つ目の要素のafterにMenu表示を指定*/
   position: absolute;
   top:5px;
-  left:-5px;
+  left:0px;
   color: #fff;
   font-size: 0.6rem;
   text-transform: uppercase;
@@ -99,8 +141,8 @@ header li {
 .navbar-toggler.active span:nth-of-type(3)::after {
   content:"Close";/*3つ目の要素のafterにClose表示を指定*/
   transform: translateY(0) rotate(-45deg);
-  top:6px;
-  left:-2px;
+  top:8px;
+  left:1px;
 }
 
 // ---------- footer ---------- //
@@ -153,6 +195,26 @@ footer li {
   margin: auto;
 }
 
+.search_from {
+  margin: auto;
+}
+
+.search_word {
+  width: 450px;
+}
+
+.search_select {
+  width: 150px;
+}
+
+.search_collection_select {
+  width: 130px;
+}
+
+.search_btn {
+  width: 80px;
+}
+
 // ---------- homes ---------- //
 
 #top-list {
@@ -194,12 +256,6 @@ footer li {
 
 .top-footer {
   text-align: left;
-}
-
-@media screen and (max-width: 675px) {
-  .top-footer li {
-    display: none;
-  }
 }
 
 .top-footer-img {
@@ -416,71 +472,6 @@ footer li {
   background-color: #6bb6ff;
 }
 
-// ---------- select レイアウト ---------- //
-
-select {
-
-  /* styling */
-  background-color: white;
-  border: thin solid blue;
-  border-radius: 4px;
-  display: inline-block;
-  font: inherit;
-  line-height: 1.5em;
-  padding: 0.5em 3.5em 0.5em 1em;
-
-  /* reset */
-
-  margin: 0;      
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-input[type="text"] {
-
-  /* styling */
-  background-color: white;
-  border: thin solid blue;
-  border-radius: 4px;
-  display: inline-block;
-  font: inherit;
-  line-height: 1.5em;
-  padding: 0.5em 3.5em 0.5em 1em;
-
-  /* reset */
-
-  margin: 0;      
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-input[type="text"] {
-
-  /* styling */
-  background-color: white;
-  border: thin solid blue;
-  border-radius: 4px;
-  display: inline-block;
-  font: inherit;
-  line-height: 1.5em;
-  padding: 0.5em 3.5em 0.5em 1em;
-
-  /* reset */
-
-  margin: 0;      
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
 // ---------- errorメッセージ ---------- //
 
 #error_explanation {
@@ -498,4 +489,28 @@ input[type="text"] {
 
 #error_explanation li {
   margin-top: 10px;
+}
+
+//---------- レシポンシブハブ ----------//
+
+@media screen and (max-width: 675px) {
+  .top-footer li {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .search_btn {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .search_word {
+    width: 270px;
+    margin-top: 10px;
+  }
+  .search_select, .search_collection_select, .search_btn {
+    margin-top: 10px;
+  }
 }

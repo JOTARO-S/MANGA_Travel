@@ -1,18 +1,18 @@
-<div class="row ml-1 mt-4">
- <div class="search_from mr-3">
+<div class="row">
+ <div class="search_from">
   
   <%= form_with(url: search_path, local: true, method: :get) do |f| %>
    <% if request.path == "/users" %>
-    <%= f.select :range, options_for_select([["ユーザー検索"],["投稿検索"],["チャット検索"]]) %>
+    <%= f.select :range, options_for_select([["ユーザー検索"],["投稿検索"],["チャット検索"]]), {}, class: "search_select" %>
     <% elsif request.path == "/chats" %>
-    <%= f.select :range, options_for_select([["チャット検索"],["ユーザー検索"],["投稿検索"]]) %>
+    <%= f.select :range, options_for_select([["チャット検索"],["ユーザー検索"],["投稿検索"]]), {}, class: "search_select" %>
    <% else %>
-    <%= f.select :range, options_for_select([["投稿検索"], ["ユーザー検索"],["チャット検索"]]) %>
+    <%= f.select :range, options_for_select([["投稿検索"], ["ユーザー検索"],["チャット検索"]]), {}, class: "search_select" %>
    <% end %>
-    <%= f.text_field :word , size: 40, placeholder: "タイトル（ユーザー名）を入力" %>
-    <%= f.collection_select(:prefectures, Category.all, :id, :name, include_blank: "所在地を選択", size: 40) %>
-    <%= f.collection_select(:tag_id, Tag.all, :id, :tag_name, include_blank: "タグを選択", size: 40 ) %>
-    <%= f.button type: "submit", class: "btn btn-secondary mb-1", style: "height: 40px; width: 80px;" do %>
+    <%= f.text_field :word , class: "search_word", placeholder: "タイトル（ユーザー名）" %>
+    <%= f.collection_select :prefectures, Category.all, :id, :name, { include_blank: "所在地" }, class: "search_collection_select" %>
+    <%= f.collection_select :tag_id, Tag.all, :id, :tag_name, { include_blank: "タグ" }, class: "search_collection_select" %>
+    <%= f.button type: "submit", class: "btn btn-secondary search_btn" do %>
      <i class="fas fa-search"></i>
     <% end %>
   <% end %>
