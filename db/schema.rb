@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_18_044118) do
+ActiveRecord::Schema.define(version: 2022_12_19_054910) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2022_12_18_044118) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -118,6 +118,16 @@ ActiveRecord::Schema.define(version: 2022_12_18_044118) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["user_id", "follower_id"], name: "index_relationships_on_user_id_and_follower_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -125,10 +135,10 @@ ActiveRecord::Schema.define(version: 2022_12_18_044118) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.text "explanation", default: ""
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+    t.text "explanation"
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -147,4 +157,6 @@ ActiveRecord::Schema.define(version: 2022_12_18_044118) do
   add_foreign_key "messages", "chats"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "follower_id"
 end
