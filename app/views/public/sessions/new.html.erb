@@ -11,12 +11,12 @@
         
       <div class="field">
         <%= f.label "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", autocorrect: "off", autocapitalize: "off", class: "form_box" %>
       </div>
 
       <div class="field">
         <%= f.label "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
+        <%= f.password_field :password, autocomplete: "current-password", autocorrect: "off", autocapitalize: "off", class: "form_box" %>
       </div>
 
       <% if devise_mapping.rememberable? %>

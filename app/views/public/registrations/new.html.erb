@@ -12,22 +12,22 @@
   
       <div class="field mt-3">
         <%= f.label "ニックネーム（20文字以内）" %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "20文字以内", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "20文字以内", autocorrect: "off", autocapitalize: "off", class: "form_box" %>
       </div>
 
       <div class="field mt-3">
         <%= f.label "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "あなたのメールアドレス", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "あなたのメールアドレス", autocorrect: "off", autocapitalize: "off", class: "form_box" %>
       </div>
 
       <div class="field mt-3">
         <%= f.label "パスワード（6文字以上）" %><br />
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード6文字以上", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード6文字以上", autocorrect: "off", autocapitalize: "off", class: "form_box" %>
       </div>
 
       <div class="field mt-3">
         <%= f.label "パスワード確認" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度パスワードを入力", autocorrect: "off", autocapitalize: "off", size: " 40 x 30 " %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度パスワードを入力", autocorrect: "off", autocapitalize: "off", class: "form_box" %>
       </div>
 
       <div class="mt-3">

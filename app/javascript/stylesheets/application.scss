@@ -367,6 +367,12 @@ footer li {
   width: 80%;
 }
 
+// ---------- admin ----------//
+
+.form_box {
+  width: 440px;
+}
+
 // ---------- btnレイアウト ---------- //
 
 .l-wrapper_01 {
@@ -492,6 +498,11 @@ footer li {
 }
 
 //---------- レシポンシブハブ ----------//
+@media screen and (max-width: 500px) {
+  .form_box {
+    width: 85%;
+  }
+}
 
 @media screen and (max-width: 675px) {
   .top-footer li {
