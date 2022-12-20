@@ -15,7 +15,7 @@
  */
  
  #main-top {
-  background-image: image-url("assets/top_image.jpg");
+  background-image: url("assets/top_image.jpg");
   height: 850px;
   background-position: center center;
   background-size: cover;
