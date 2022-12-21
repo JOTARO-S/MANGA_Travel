@@ -60,12 +60,6 @@ class Public::PostsController < ApplicationController
     @posts = current_user.posts.where(draft_status: true).page(params[:page]).per(8)
   end
   
-  def draft_edit
-  end
-  
-  def draft_destroy
-  end
-  
   private
   
   def post_params
