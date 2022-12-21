@@ -26,7 +26,7 @@ class Public::ChatsController < ApplicationController
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy
-    redirect_to chats_path, notice: "削除しました。"
+    redirect_to chat_path, notice: "削除しました。"
   end
 end
 

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy, :update]
     end
     resources :categories, except: [:new, :show]
+    resources :chats, only: [:index, :show, :destroy] do
+      resources :messages, only: [:create, :destroy]
+    end
   end
   scope module: :public do
     root to: "homes#top"

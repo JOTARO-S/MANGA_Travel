@@ -1,0 +1,15 @@
+<div class="container p-2" style="background-color:rgba(77,77,77,0.3);">
+ <div class="row p-4">
+       <%= link_to '削除', admin_chat_path(@chat), 'data-turbolinks': false, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger col-md-1 ml-3"%>
+ </div>
+     <div class="row p-4">
+        <div class="col-12">
+             <div class="left-contents" style="font-size: 30px"><%= @chat.title %></div>
+             <div class="left-contents" style=""><%= @chat.explanation %></div>
+             <div class="left-contents" style=""><%= link_to @chat.user.name, user_path(@chat.user_id) %></div>
+             <div class="left-contents" style="">投稿日時:<%= @chat.created_at.to_s(:datetime_jp) %></div>
+        </div>
+  </div>
+  <%= render "admin/messages/index", { chat: @chat } %>
+</div>
+

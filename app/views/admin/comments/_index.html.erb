@@ -1,0 +1,21 @@
+<div class="row p-3">
+   <% post.comments.each do |post_comment| %>
+    <div class="col-md-4 offset-1 mt-1">
+     <%= link_to admin_user_path(post_comment.user) do %>
+      <%= image_tag post_comment.user.get_user_image, size:"100x100" %>
+      <div class="" style="text-align: center;"><%= post_comment.user.name %></div>
+     <% end %>
+    </div>
+    <div class="col-md-7 mt-1" style="background-color:rgba(255,255,255,0.5);">
+     <div><%= post_comment.comment_content %></div>
+     <div style="text-align: right;">
+     <%= post_comment.created_at.to_s(:datetime_jp) %>
+     <% if post_comment.user_id == 0 %>
+        <%= link_to 'Destroy', admin_post_comment_path(post_comment.post,post_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger"%>
+       <% else %>
+        <%= link_to 'Destroy', admin_post_comment_path(post_comment.post,post_comment), method: :patch, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-primary"%>
+       <% end %>
+     </div>
+    </div>
+    <% end %>
+  </div>

@@ -1,0 +1,21 @@
+<div class="row p-3">
+    <% chat.messages.each do |message| %>
+    <div class="col-md-4 offset-1 mt-1">
+        <%= link_to admin_user_path(message.user) do %>
+          <%= image_tag message.user.get_user_image, size:"100x100" %>
+          <div class="" style="text-align: center;"><%= message.user.name %></div>
+        <% end %>
+    </div>
+    <div class="col-md-7 mt-1" style="background-color:rgba(255,255,255,0.5);">
+      <div><%= message.message_content %></div>
+      <div style="text-align: right;">
+        <%= message.created_at.to_s(:datetime_jp) %>
+        <% if message.user_id == 0 %>
+          <%= link_to 'Destroy', admin_chat_message_path(message.chat.id, message.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
+        <% else %>
+          <%= link_to 'Destroy', admin_chat_message_path(message.chat.id, message.id), method: :patch, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>

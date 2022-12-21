@@ -10,7 +10,7 @@
 	       <div class="table-title pl-2 mt-2">メールアドレス</div>
 	       <div class="pl-2"><%= @user.email %></div>
 	       <div class="table-title pl-2">プロフィール</div>
-	         <% if @user.explanation.empty? %>
+	         <% if @user.explanation == nil %>
 	           <div class="pl-2">なし</div>
 	         <% else %>
 	           <div class="pl-2"><%= @user.explanation %></div>
