@@ -23,8 +23,6 @@ Rails.application.routes.draw do
     patch "users/withdraw" => "users#withdraw", as: "withdraw"
     resources :users, except: [:new, :create, :destroy]
     get "posts/draft" => "posts#draft", as: "draft"
-    patch "posts/draft" => "posts#draft_edit", as: "draft_edit"
-    delete "posts/draft" => "posts#draft_destroy", as: "draft_destroy"
     resources :posts do
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
