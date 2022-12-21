@@ -1,5 +1,5 @@
 <div class="row p-3">
-   <% post.comments.each do |post_comment| %>
+   <% post_comments.each do |post_comment| %>
     <div class="col-md-4 offset-1 mt-1">
      <%= link_to(post_comment.user) do %>
       <%= image_tag post_comment.user.get_user_image, size:"100x100" %>
@@ -16,4 +16,7 @@
      </div>
     </div>
     <% end %>
+  </div>
+   <div class="row p-3">
+    <%= paginate post_comments %>
   </div>

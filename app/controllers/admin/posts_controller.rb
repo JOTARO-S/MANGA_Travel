@@ -8,6 +8,7 @@ before_action :authenticate_admin!
     @post= Post.find(params[:id])
     @post_comment = Comment.new
     @post_tags = @post.tags
+    @post_comments = @post.comments.order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def edit

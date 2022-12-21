@@ -12,7 +12,7 @@
              <div class="left-contents" style="">投稿日時:<%= @chat.created_at.to_s(:datetime_jp) %></div>
         </div>
   </div>
-  <%= render "public/messages/index", { chat: @chat } %>
+  <%= render "public/messages/index", { chat: @chat, chat_messages: @chat_messages } %>
   <%= render "public/messages/form", { chat: @chat, chat_message: @chat_message } %>
 </div>
 

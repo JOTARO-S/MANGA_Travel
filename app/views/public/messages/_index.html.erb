@@ -1,5 +1,5 @@
 <div class="row p-3">
-    <% chat.messages.each do |message| %>
+    <% chat_messages.each do |message| %>
     <div class="col-md-4 offset-1 mt-1">
         <%= link_to(message.user) do %>
           <%= image_tag message.user.get_user_image, size:"100x100" %>
@@ -16,4 +16,7 @@
       </div>
     </div>
     <% end %>
+  </div>
+  <div class="row p-3">
+    <%= paginate chat_messages %>
   </div>

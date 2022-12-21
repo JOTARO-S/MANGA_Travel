@@ -6,10 +6,10 @@
         <div class="col-12">
              <div class="left-contents" style="font-size: 30px"><%= @chat.title %></div>
              <div class="left-contents" style=""><%= @chat.explanation %></div>
-             <div class="left-contents" style=""><%= link_to @chat.user.name, user_path(@chat.user_id) %></div>
+             <div class="left-contents" style=""><%= link_to @chat.user.name, admin_user_path(@chat.user_id) %></div>
              <div class="left-contents" style="">投稿日時:<%= @chat.created_at.to_s(:datetime_jp) %></div>
         </div>
   </div>
-  <%= render "admin/messages/index", { chat: @chat } %>
+  <%= render "admin/messages/index", { chat: @chat, chat_messages: @chat_messages } %>
 </div>
 

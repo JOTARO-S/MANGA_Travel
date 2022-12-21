@@ -7,6 +7,7 @@ end
 
 def show
     @chat = Chat.find(params[:id])
+    @chat_messages = @chat.messages.order(created_at: "DESC").page(params[:page]).per(10)
 end
 
 def destroy
