@@ -3,12 +3,33 @@
 <p><%= @email %> 様</p>
 
 <p>「<%= ENV['APP_NAME'] %>」でございます。</p>
-<p>この度は「<%= ENV['APP_NAME'] %>」にご登録いただきありがとうございます。</p>
 
-<p>下記のリンクからアカウントメールの確認をお願いいたします。</p>
+<% if @user.try(:unconfirmed_email?) %>
 
-<p><%= link_to 'アカウントメールの確認はこちら', confirmation_url(@resource, confirmation_token: @token) %></p>
+    <p>以下のリンクからユーザの認証を行ってメールアドレス変更手続きを完了してください。</p>
+    
+    <p><%= link_to 'ユーザ認証を実行する', confirmation_url(@user,confirmation_token: @token) %></p>
 
+<% else %>
+
+    <% if @user.confirmed_at != nil %>
+    
+        <p>会員登録が完了済みです。</p>
+        
+        <p>下記リンクからログインをお願いいたします。</p>
+        
+        <p>URL ： <%= ENV['WEB_PROTOCOL'] %>://<%= ENV['WEB_HOST'] %></p>
+        
+    <% else %>
+        <p>この度は「<%= ENV['APP_NAME'] %>」にご登録いただきありがとうございます。</p>
+        
+        <p>下記のリンクからアカウントメールの確認をお願いいたします。</p>
+        
+        <p><%= link_to 'アカウントメールの確認はこちら', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+    <% end %>
+    
+<% end %>
 
 <p>※このメールは返信しても届きません。お問い合わせはサイト下部にある「お問い合わせ」からお願いいたします。</p>
 
