@@ -18,6 +18,13 @@ before_action :authenticate_admin!
         end
    end
    
+   def destroy
+     @user =User.find(params[:id])
+      if @user.destroy
+        redirect_to admin_users_path, notice: "削除しました。"
+      end
+   end
+   
    private
 
     def user_params

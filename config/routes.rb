@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
   namespace :admin do
+    root to: "posts#index"
     get "comments" => "comments#index", as: "comments"
-    resources :users, except: [:new, :edit, :create, :destroy]
+    resources :users, except: [:new, :edit, :create]
     resources :posts, except: [:new, :create] do
       resources :comments, only: [:create, :destroy, :update]
     end
@@ -31,6 +32,10 @@ Rails.application.routes.draw do
     resources :chats, except: [:edit, :update] do
       resources :messages, only: [:create, :destroy]
     end
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+    post 'contacts/back', to: 'contacts#back', as: 'back'
+    get 'done', to: 'contacts#done', as: 'done'
   end
   
 # 顧客用
@@ -41,8 +46,8 @@ devise_for :user, controllers: {
 }
 
 devise_scope :user do
-    post 'user/guest_sign_in', to: 'public/sessions#guest_sign_in'
-  end
+  post "user/guest_sign_in", to: "public/sessions#guest_sign_in"
+end
 
 # 管理者用
 devise_for :admin, controllers: {

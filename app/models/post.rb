@@ -71,8 +71,8 @@ class Post < ApplicationRecord
     if place.blank?
       errors[:base] << "住所や場所の名前を入力してください。"
     end
-    if place.length > 30
-      errors[:base] << "住所や場所の名前は30文字以内で入力してください。"
+    if place.length > 50
+      errors[:base] << "住所や場所の名前は50文字以内で入力してください。"
     end
     if explanation.length > 255
       errors[:base] << "説明は255文字以内で入力してください。"

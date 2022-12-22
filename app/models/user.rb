@@ -2,7 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable,
+         :validatable, :confirmable
+  
   ##投稿       
   has_many :posts , dependent: :destroy
   has_many :comments , dependent: :destroy
@@ -36,10 +38,13 @@ class User < ApplicationRecord
   end
   
   ## ゲスト機能
+  
   def self.guest
-    find_or_create_by!(name: "guestuser", email: "guest@example.com") do |user|
+    find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
+      user.confirmed_at = Time.now # ← Confirmable を設定している場合は追加
+      user.name = "ゲストユーザー" # ←ユーザー名を設定している場合は追加
+      user.explanation = "ゲストユーザーです。"
     end
   end
   

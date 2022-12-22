@@ -9,7 +9,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.name == "guestuser"
+    if @user.email == "guest@example.com"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはそちらのページへ遷移できません。'
     end
   end

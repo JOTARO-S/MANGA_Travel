@@ -44,6 +44,9 @@
                 <%= form.submit :変更, class: 'btn btn-block btn-secondary' %>
               </div>
               <% end %>
+              <div class="form-group row">
+              	<%= link_to "削除", admin_user_path(@user), "data-turbolinks": false, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-block btn-danger"%>
+            	</div>
             </div>
     </div>
     
