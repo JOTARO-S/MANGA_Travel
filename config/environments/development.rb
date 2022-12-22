@@ -76,18 +76,17 @@ Rails.application.configure do
   
   config.hosts.clear
   
-  host = 'localhost'
+  host = ENV['WEB_HOST']
   Rails.application.routes.default_url_options[:host] = host
   
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = host
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-      enable_starttls_auto: true,
       port: 587,
       address: 'smtp.gmail.com',
-      domain: 'smtp.gmail.com',
+      domain: 'gmail.com',
       user_name: ENV['SMTP_USERNAME'],
       password: ENV['SMTP_PASSWORD'],
       enable_starttls_auto: true,
