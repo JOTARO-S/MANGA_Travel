@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
   
+# 顧客用
+devise_for :user, controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions',
+  passwords: 'public/passwords'
+}
+
+devise_scope :user do
+  post "user/guest_sign_in", to: "public/sessions#guest_sign_in"
+end
+
+# 管理者用
+devise_for :admin, controllers: {
+  sessions: "admin/sessions"
+}
+  
   namespace :admin do
     root to: "posts#index"
     get "comments" => "comments#index", as: "comments"
@@ -37,21 +53,6 @@ Rails.application.routes.draw do
     post 'contacts/back', to: 'contacts#back', as: 'back'
     get 'done', to: 'contacts#done', as: 'done'
   end
-  
-# 顧客用
-devise_for :user, controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions',
-  passwords: 'public/passwords'
-}
 
-devise_scope :user do
-  post "user/guest_sign_in", to: "public/sessions#guest_sign_in"
-end
-
-# 管理者用
-devise_for :admin, controllers: {
-  sessions: "admin/sessions"
-}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
