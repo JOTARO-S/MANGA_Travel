@@ -8,7 +8,7 @@
 
 <p>下記のリンクをクリックすると、アカウントのロックが解除されます。</p>
 
-<p><%= link_to 'アカウントをアンロックする', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'アカウントをアンロックする', user_unlock_url(@resource, unlock_token: @token) %></p>
 
 <p>
 覚えがないのにこのメールが届いたという方<br>

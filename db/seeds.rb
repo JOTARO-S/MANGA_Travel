@@ -12,17 +12,6 @@ Admin.create!(
    password: "testes"
 )
 
-defaultUser = User.create!(
-   [
-   {id: 2, name: "旅行好き", email: "test@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
-   {id: 3, name: "漫画好き", email: "manga@test.com", password: "testes", explanation: "漫画を読むことが好きです！旅行にはあまり行った事が無いので参考にしたい！", is_deleted: false },
-   {id: 4, name: "ジョニー", email: "jonny@test.com", password: "testes", explanation: "好きな漫画の聖地巡礼します^^", is_deleted: false },
-   ]   
-)
-.skip_confirmation!
-defaultUser.save!
-
-
 Tag.create!(
    [
    {id: 1, tag_name: "宇宙"},{id: 2, tag_name: "科学"},{id: 3, tag_name: "自然"},{id: 4, tag_name: "神社"},
@@ -39,6 +28,19 @@ Category.create!(
    {name: "佐賀県"},{name: "長崎県"},{name: "熊本県"},{name: "大分県"},{name: "宮崎県"},{name: "鹿児島県"},{name: "沖縄県"},{name: "その他"}
    ]
 )
+
+
+users = 
+   [
+   {id: 2, name: "旅行好き", email: "test@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
+   {id: 3, name: "漫画好き", email: "manga@test.com", password: "testes", explanation: "漫画を読むことが好きです！旅行にはあまり行った事が無いので参考にしたい！", is_deleted: false },
+   {id: 4, name: "ジョニー", email: "jonny@test.com", password: "testes", explanation: "好きな漫画の聖地巡礼します^^", is_deleted: false },
+   ]
+   
+users.each do |record|
+ User.create!(record) unless User.find_by(email: record[:email])
+end
+
 
 Post.create!(
    [
