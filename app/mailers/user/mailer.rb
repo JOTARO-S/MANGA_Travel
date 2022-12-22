@@ -1,7 +1,7 @@
-class Users::Mailer < Devise::Mailer
+class User::Mailer < Devise::Mailer
   helper :application
   include Devise::Controllers::UrlHelpers
-  default template_path: 'admin/mailer'
+  default template_path: 'public/mailer'
 
   def confirmation_instructions(record, token, opts={})
     if record.unconfirmed_email != nil

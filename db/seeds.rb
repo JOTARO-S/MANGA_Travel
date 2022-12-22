@@ -12,13 +12,16 @@ Admin.create!(
    password: "testes"
 )
 
-User.create!(
+defaultUser = User.create!(
    [
    {id: 2, name: "旅行好き", email: "test@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
    {id: 3, name: "漫画好き", email: "manga@test.com", password: "testes", explanation: "漫画を読むことが好きです！旅行にはあまり行った事が無いので参考にしたい！", is_deleted: false },
    {id: 4, name: "ジョニー", email: "jonny@test.com", password: "testes", explanation: "好きな漫画の聖地巡礼します^^", is_deleted: false },
    ]   
 )
+.skip_confirmation!
+defaultUser.save!
+
 
 Tag.create!(
    [

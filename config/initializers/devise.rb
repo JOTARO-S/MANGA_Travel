@@ -27,9 +27,9 @@ Devise.setup do |config|
  
 
   # Configure the class responsible to send e-mails.
-  config.mailer = "Users::Mailer"
+  config.mailer = "User::Mailer"
   
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = ENV['SMTP_USERNAME']
 
   require 'devise/orm/active_record'
 
