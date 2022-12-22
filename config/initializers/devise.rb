@@ -27,7 +27,25 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'Users::Mailer'
+
+  require 'devise/orm/active_record'
+
+  config.reconfirmable = true
+
+  config.expire_all_remember_me_on_sign_out = true
+
+  config.password_length = 6..20
+
+  config.timeout_in = 1.day
+
+  config.confirm_within = 1.days
+
+  config.reset_password_within = 6.hours
+
+  config.scoped_views = true
+
+  config.sign_out_via = :delete
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

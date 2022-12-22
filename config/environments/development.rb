@@ -93,6 +93,8 @@ Rails.application.configure do
       authentication: "login",
   }
   
+  config.action_mailer.perform_caching = false
+  
 
   
 end
