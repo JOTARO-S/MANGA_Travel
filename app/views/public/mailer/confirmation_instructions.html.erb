@@ -8,7 +8,7 @@
 
     <p>以下のリンクからユーザの認証を行ってメールアドレス変更手続きを完了してください。</p>
     
-    <p><%= link_to 'ユーザ認証を実行する', user_confirmation_url(@user,confirmation_token: @token) %></p>
+    <p><%= link_to 'ユーザ認証を実行する', confirmation_url(@user,:confirmation_token => @resource.confirmation_token) %></p>
 
 <% else %>
 
@@ -25,7 +25,7 @@
         
         <p>下記のリンクからアカウントメールの確認をお願いいたします。</p>
         
-        <p><%= link_to 'アカウントメールの確認はこちら', user_confirmation_url(@resource, confirmation_token: @token) %></p>
+        <p><%= link_to 'アカウントメールの確認はこちら', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
 
     <% end %>
     
