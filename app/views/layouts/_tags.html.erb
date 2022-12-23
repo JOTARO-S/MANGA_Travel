@@ -1,0 +1,14 @@
+<div class="row mt-3">
+    <h2>人気なタグ(TOP10)</h2>
+</div>
+<div class="row mt-3 mb-3 tag_box" style="width: 80%; margin-left:auto; margin-right:auto;">
+        <div class="tag-list"  style="">
+            <ul>
+                <% @tags.each do |tag| %>
+                    <%= link_to  posts_path(tag_id: tag.id), 'data-turbolinks': false, class: "nav-link text-dark" do %>
+                        <li><%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %></li>
+                    <% end %>
+                <% end %>
+            </ul>
+        </div>
+</div>

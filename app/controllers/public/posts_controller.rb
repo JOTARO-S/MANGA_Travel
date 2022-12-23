@@ -7,6 +7,11 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.where(is_active: false, draft_status: false).page(params[:page]).per(8)
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @word = @tag.tag_name
+      @posts = @tag.posts.where(is_active: false, draft_status: false).page(params[:page]).per(8)
+    end
   end
 
   def show

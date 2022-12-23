@@ -1,5 +1,5 @@
 <div id="main-top" style="height:870px">
-    <h4 class="pt-3 pb-3" style="font-size: 28px; text-align:center">MANGA×Travel - 漫画・アニメの舞台となった場所を共有しよう</h4>
+    <h4 class="top-title">MANGA×Travel - 漫画・アニメの舞台となった場所を共有しよう</h4>
     
     <div class="container">
         <%= render "layouts/search", { search: @search } %>
@@ -29,6 +29,9 @@
             <li><%= link_to "チャット一覧", chats_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
         </ul>
     </div>
+    
+    <%= render "layouts/tags", tags: @tags %>
+    
     <div class="row mt-3">
          <div class=""><h2>人気な投稿一覧（人気順過去1週間）</h2></div>
     </div>
@@ -57,7 +60,9 @@
                                     タグなし
                                 <% else %>
                                     <% post.tags.each do |tag| %>
-                                        <%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %><br>
+                                        <%= link_to  posts_path(tag_id: tag.id), 'data-turbolinks': false, class: "nav-link text-dark" do %>
+                                            <%= tag.tag_name %><%="(#{tag.posts.where(is_active: false, draft_status: false).count})" %>
+                                        <% end %>
                                     <% end %>
                                 <% end %>
                             </p>

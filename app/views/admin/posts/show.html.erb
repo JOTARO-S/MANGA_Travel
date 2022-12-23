@@ -1,4 +1,4 @@
-<div class="container p-2" style="background-color:rgba(77,77,77,0.3);">
+<div class="container p-2 post-flame">
  <div class="row p-4">
   <div class="col-md-6">
    <div class="" style="display: flex">
@@ -20,11 +20,13 @@
     </div>
     <div class="mt-3 mb-3">
      <% if @post.post_image.attached? %>
-      <div id="img">
+     <div class="img-child" style="">
+      <div id="img" style="">
        <% @post.post_image.each_with_index do |image, i| %>
         <%= image_tag(image, class: "img post-images", id: "img0#{i+1}" ) %>
        <% end %>
       </div>
+     </div>
      <% end %> 
     </div>
    </div>
