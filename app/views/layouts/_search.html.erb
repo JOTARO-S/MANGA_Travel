@@ -1,7 +1,7 @@
 
- <div class="">
+ <div class="search_box">
   <%= form_with(url: search_path, local: true, method: :get) do |f| %>
-  <div class="mt-1">
+  <div class="mt-1 search_from">
    <% if request.path == "/users" %>
     <%= f.select :range, options_for_select([["ユーザー検索"],["投稿検索"],["チャット検索"]]), {}, class: "search_select" %>
     <% elsif request.path == "/chats" %>
