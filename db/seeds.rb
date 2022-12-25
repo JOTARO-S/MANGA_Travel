@@ -35,6 +35,15 @@ users =
    {id: 2, name: "旅行好き", email: "test@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
    {id: 3, name: "漫画好き", email: "manga@test.com", password: "testes", explanation: "漫画を読むことが好きです！旅行にはあまり行った事が無いので参考にしたい！", is_deleted: false },
    {id: 4, name: "ジョニー", email: "jonny@test.com", password: "testes", explanation: "好きな漫画の聖地巡礼します^^", is_deleted: false },
+   {id: 5, name: "旅行太郎", email: "taro@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
+   {id: 6, name: "漫画花子", email: "hanako@test.com", password: "testes", explanation: "漫画を読むことが好きです！旅行にはあまり行った事が無いので参考にしたい！", is_deleted: false },
+   {id: 7, name: "ケイミー", email: "keimy@test.com", password: "testes", explanation: "好きな漫画の聖地巡礼します^^", is_deleted: false },
+   {id: 8, name: "スライム", email: "slime@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
+   {id: 9, name: "ポケ", email: "poke@test.com", password: "testes", explanation: "ゲームが好きです！", is_deleted: true },
+   {id: 10, name: "ゲーマー", email: "gamer@test.com", password: "testes", explanation: "好きな漫画の聖地巡礼します^^", is_deleted: false },
+   {id: 11, name: "ヘッドホン", email: "head@test.com", password: "testes", explanation: "47都道府県制覇！沖縄には毎年行ってます！", is_deleted: false },
+   {id: 12, name: "モニター", email: "moniter@test.com", password: "testes", explanation: "漫画を読むことが好きです！旅行にはあまり行った事が無いので参考にしたい！", is_deleted: false },
+   {id: 13, name: "アニメ好き", email: "anime@test.com", password: "testes", explanation: "ゲームが好きです！", is_deleted: false },
    ]
    
 users.each do |record|
@@ -49,6 +58,18 @@ Post.create!(
     {id: 2, user_id: 3, category_id: 13, name: "言の葉の庭", place: "東京都新宿区内藤町11 新宿御苑",
    explanation: "作中登場した箇所が敷地内に点在しています。夏頃に行きましたが、青葉が生い茂っていて新宿の中でとても自然を感じることが出来ました！", is_active: false, draft_status: false },
    {id: 3, user_id: 4, category_id: 9, name: "ひぐらしのなく頃に", place: "岐阜県大野郡白川村荻町559 白川八幡神社",
+   explanation: "作中に登場するキャラクターの古手梨花が当主である古手神社のモデルと言われている場所です。祭具殿もありますが少しと離れているので注意です！", is_active: false, draft_status: false },
+   {id: 4, user_id: 6, category_id: 8, name: "宇宙兄弟", place: "茨城県つくば市千現2-1-1 宇宙航空研究開発機構（つくば宇宙センター）",
+   explanation: "茨城県つくば市にあります。JAXAと言ったほうが伝わりやすいかもしれません。一般公開している場所は予約なしでも入れますが、予約することで普段入ることが出来ない構内にも入れるのでとてもオススメです！", is_active: false, draft_status: false },
+    {id: 5, user_id: 6, category_id: 13, name: "言の葉の庭", place: "東京都新宿区内藤町11 新宿御苑",
+   explanation: "作中登場した箇所が敷地内に点在しています。夏頃に行きましたが、青葉が生い茂っていて新宿の中でとても自然を感じることが出来ました！", is_active: false, draft_status: false },
+   {id: 6, user_id: 7, category_id: 9, name: "ひぐらしのなく頃に", place: "岐阜県大野郡白川村荻町559 白川八幡神社",
+   explanation: "作中に登場するキャラクターの古手梨花が当主である古手神社のモデルと言われている場所です。祭具殿もありますが少しと離れているので注意です！", is_active: false, draft_status: false },
+   {id: 7, user_id: 3, category_id: 8, name: "宇宙兄弟", place: "茨城県つくば市千現2-1-1 宇宙航空研究開発機構（つくば宇宙センター）",
+   explanation: "茨城県つくば市にあります。JAXAと言ったほうが伝わりやすいかもしれません。一般公開している場所は予約なしでも入れますが、予約することで普段入ることが出来ない構内にも入れるのでとてもオススメです！", is_active: false, draft_status: false },
+    {id: 8, user_id: 6, category_id: 13, name: "言の葉の庭", place: "東京都新宿区内藤町11 新宿御苑",
+   explanation: "作中登場した箇所が敷地内に点在しています。夏頃に行きましたが、青葉が生い茂っていて新宿の中でとても自然を感じることが出来ました！", is_active: false, draft_status: false },
+   {id: 9, user_id: 7, category_id: 9, name: "ひぐらしのなく頃に", place: "岐阜県大野郡白川村荻町559 白川八幡神社",
    explanation: "作中に登場するキャラクターの古手梨花が当主である古手神社のモデルと言われている場所です。祭具殿もありますが少しと離れているので注意です！", is_active: false, draft_status: false },
    ]
 )
