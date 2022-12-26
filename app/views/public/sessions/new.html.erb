@@ -48,7 +48,7 @@
       <div class="p-2" style="background-color: #FFF;">
         <p class="text-center" style="font-size: 15px;">まだ会員登録がお済みでいない方はこちらより登録可能です。</p>
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "同意して新規登録", new_registration_path(resource_name), class: 'btn btn-block btn-secondary p-2' %><br />
+      <%= link_to "新規登録", new_registration_path(resource_name), class: 'btn btn-block btn-secondary p-2' %><br />
       <% end %>
       </div>
     
