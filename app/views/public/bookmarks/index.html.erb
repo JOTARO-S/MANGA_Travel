@@ -1,6 +1,10 @@
-<% if @bookmarks.empty? %>
-  <h4>ブックマークはありません。</h4>
-<% else %>
-  <%= render 'public/bookmarks/bookmark_post', {bookmarks: @bookmarks} %>
-<% end %>
+<div class="container">
+    <div class="row pt-3">
+      <h2>ブックマーク一覧</h2>
+        <div class="col-md-12">
+          <% if @bookmarks.empty? %>
+            <h4>ブックマークはありません。</h4>
+          <% else %>
+            <%= render 'public/bookmarks/bookmark_post', {bookmarks: @bookmarks} %>
+          <% end %>
 
