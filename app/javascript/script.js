@@ -36,6 +36,7 @@ $(document).ready(function () {
     });
 });
 
+// ヘルプ
 $(document).ready(function () {
 //アコーディオンをクリックした時の動作
 $('.accordion-title').on('click', function() {//タイトル要素をクリックしたら
@@ -61,4 +62,27 @@ $(window).on('load', function(){
     $(Box).slideDown(500);          //アコーディオンを開く
   });
 });
+});
+
+//ページトップ
+$(document).ready(function () {
+// #page-topをクリックした際の設定
+$('#page-top').click(function () {
+    $('body,html').animate({
+        scrollTop: 0//ページトップまでスクロール
+    }, 500);//ページトップスクロールの速さ。数字が大きいほど遅くなる
+    return false;//リンク自体の無効化
+});
+});
+
+
+//ページダウン
+$(document).ready(function () {
+  $('.page-down').click(function () {
+    const position = $('#top-list').offset().top;
+    $('body,html').animate({
+        scrollTop: position
+    }, 500);
+    return false;
+  });
 });
