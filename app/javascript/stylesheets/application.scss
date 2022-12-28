@@ -237,6 +237,12 @@ footer li {
 
 // ---------- homes ---------- //
 
+.top-news {
+  background-color: rgba(0,0,0,0.5);
+  outline: solid 2px #444;
+  color: yellow;
+}
+
 .top-title {
   padding: 24px;
   font-size: 28px;
@@ -323,6 +329,7 @@ footer li {
 // ---------- tags ---------- //
 
 .tag_box {
+  max-width: 80%;
   padding: 20px;
   background-color: rgba(255,255,255,0.5);
   border-radius: 20px;
@@ -331,14 +338,15 @@ footer li {
 
 .tag-list ul {
   list-style: none;
-  display: flex;   
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 #tag-list li {
   background-color: rgba(255,255,255,0.5);
   border-radius: 40px;
-  margin-right: 30px;
+  margin-right: auto;
     
 }
 
