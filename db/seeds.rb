@@ -55,7 +55,7 @@ end
 
 Post.create!(
    [
-   {id: 1, user_id: 1, category_id: 1, name: "ゴールデンカムイ", place: "北海道小樽市祝津3-288 鰊御殿",
+   {id: 1, user_id: 2, category_id: 1, name: "ゴールデンカムイ", place: "北海道小樽市祝津3-288 鰊御殿",
    explanation: "作中に登場する鰊御殿です。 御殿からの景観が良く、お土産コーナーには作品のお土産もありました。 中では、歴史を感じさせる囲炉裏や漁や加工に使われた道具が展示されています。 ここに向かう途中には水族館もあるので、そちらも別で楽しめるかと思います！", is_active: false, draft_status: false },
    {id: 2, user_id: 3, category_id: 8, name: "宇宙兄弟", place: "茨城県つくば市千現2-1-1 宇宙航空研究開発機構（つくば宇宙センター）",
    explanation: "茨城県つくば市にあります。JAXAと言ったほうが伝わりやすいかもしれません。一般公開している場所は予約なしでも入れますが、予約することで普段入ることが出来ない構内にも入れるのでとてもオススメです！", is_active: false, draft_status: false },
@@ -89,15 +89,15 @@ PostTag.create!(
    [
    {id: 1, post_id: 1, tag_id: 1},{id: 2, post_id: 1, tag_id: 2},{id: 3, post_id: 1, tag_id: 3},{id: 4, post_id: 2, tag_id: 4},
    {id: 5, post_id: 2, tag_id: 5},{id: 6, post_id: 2, tag_id: 6},{id: 7, post_id: 3, tag_id: 7},{id: 8, post_id: 3, tag_id: 8},
-   {id: 9, post_id: 4, tag_id: 7},{id: 10, post_id: 4, tag_id: 9},{id: 11, post_id: 5, tag_id: 9},{id: 12, post_id: 5, tag_id: 7},
-   {id: 13, post_id:7, tag_id: 8},{id: 14, post_id: 7, tag_id:8 },{id: 15, post_id: 10, tag_id: 8},{id: 16, post_id: 6, tag_id: 10},
+   {id: 9, post_id: 4, tag_id: 7},{id: 10, post_id: 4, tag_id: 9},{id: 11, post_id: 5, tag_id: 7},{id: 12, post_id: 5, tag_id: 9},
+   {id: 13, post_id:7, tag_id: 8},{id: 14, post_id: 10, tag_id: 8},{id: 15, post_id: 6, tag_id: 10},
    ]
 )
 
 Comment.create!(
    [
    {id: 1, user_id: 5, post_id: 1, comment_content: "私も行ったことあります！"},
-   {id: 2, user_id: 1, post_id: 1, comment_content: "コメントありがとうございます！いいですよね！景色がとても綺麗でした！"},
+   {id: 2, user_id: 2, post_id: 1, comment_content: "コメントありがとうございます！いいですよね！景色がとても綺麗でした！"},
    {id: 3, user_id: 6, post_id: 1, comment_content: "私も好きなので行ってみたいです…！"},
    {id: 4, user_id: 2, post_id: 2, comment_content: "私も行ったことあります！人工衛星が展示されていてとても大きく驚愕しました！"},
    {id: 5, user_id: 3, post_id: 2, comment_content: "コメントありがとうございます！圧巻ですよね！"},
@@ -110,7 +110,6 @@ Bookmark.create!(
    [
    {id: 1, user_id: 2, post_id: 1},{id: 2, user_id: 2, post_id: 2},{id: 3, user_id: 3, post_id: 3},{id: 4, user_id: 3, post_id: 1},
    {id: 5, user_id: 3, post_id: 2},{id: 6, user_id: 4, post_id: 5},{id: 7, user_id: 5, post_id: 6},{id: 8, user_id: 6, post_id: 5},
-   {id: 4, user_id: 5, post_id: 5},
    {id: 9, user_id: 3, post_id: 5},
    ]
 )
