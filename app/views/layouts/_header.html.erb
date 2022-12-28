@@ -21,7 +21,7 @@
                   <li><%= link_to "所在地登録", admin_categories_path, class: "nav-link text-dark" %></li><!--所在地一覧へのリンク-->
                   <li><%= link_to "コメント一覧", admin_comments_path, class: "nav-link text-dark" %></li><!--コメント一覧へのリンク-->
                   <li><%= link_to "チャット一覧", admin_chats_path, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
-                  <li><%= link_to "ログアウトする", destroy_admin_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
               <% end %>
               <!--User側ログイン中のheader-->
               <% if user_signed_in? %> <!--User客側がログイン中か確認する-->
@@ -29,7 +29,7 @@
                   <li><%= link_to "投稿一覧", posts_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
                   <li><%= link_to "チャット一覧", chats_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
                   <li><%= link_to "マイページ", user_path(current_user), class: "nav-link text-dark" %></li><!--マイページへのリンク-->
-                  <li><%= link_to "ログアウトする", destroy_user_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-dark", method: :delete %></li><!--ログアウトへのリンク-->
               <!--User側のheader-->
               <% else %><!--非ログイン時に表示するheader-->
                 <% unless admin_signed_in? %>
