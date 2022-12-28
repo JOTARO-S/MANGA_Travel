@@ -121,3 +121,9 @@ Message.create!(
    {id: 5, user_id: 3, chat_id: 2, message_content: "私のオススメはゴールデンカムイです！バトル、ギャグなど色々な要素があります！"},{id: 6, user_id: 4, chat_id: 2, message_content: "私もギャグ漫画は良く読みます！銀魂とかどうでしょうか！？"}
    ]   
 )
+
+images = Post.find(1)
+images.post_image.attach(io: File.open(Rails.root.join('app/assets/images/kinkamu_image1.jpg')),filename: 'kinkamu_image1.jpg')
+images.post_image.attach(io: File.open(Rails.root.join('app/assets/images/kinkamu_image2.jpg')),filename: 'kinkamu_image2.jpg')
+images.post_image.attach(io: File.open(Rails.root.join('app/assets/images/kinkamu_image3.jpg')),filename: 'kinkamu_image3.jpg')
+images.post_image.attach(io: File.open(Rails.root.join('app/assets/images/kinkamu_image4.jpg')),filename: 'kinkamu_image4.jpg')
