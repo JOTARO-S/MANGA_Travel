@@ -15,6 +15,12 @@ class User < ApplicationRecord
   ##チャット
   has_many :chats , dependent: :destroy
   has_many :messages, dependent: :destroy
+  # フォローをした、されたの関係
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 一覧画面で使う
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
   
   ## プロフィール画像
   has_one_attached :user_image
@@ -47,6 +53,19 @@ class User < ApplicationRecord
       user.name = "ゲストユーザー" # ←ユーザー名を設定している場合は追加
       user.explanation = "ゲストユーザーです。"
     end
+  end
+  
+  # フォローしたときの処理
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+# フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+# フォローしているか判定
+  def following?(user)
+    followings.include?(user)
   end
   
 end
