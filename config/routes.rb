@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  
-  get 'relationships/followings'
-  get 'relationships/followers'
+
 # 顧客用
 devise_for :user, controllers: {
   registrations: "public/registrations",
