@@ -36,6 +36,7 @@
 	          
 
         <div class='row'>
+          <% unless @user == current_user %>
           <div class="col-12 mt-3">
           <% if current_user.following?(@user) %>
             <%= link_to "フォロー中", user_relationships_path(@user.id), class: "btn btn-outline-success btn-block", method: :delete %>
@@ -43,6 +44,7 @@
             <%= link_to "フォロー", user_relationships_path(@user.id), class: "btn btn-success btn-block", method: :post %>
           <% end %>
           </div>
+          <% end %>
           <% if @user == current_user %>
 　          <% if @user.name != "guestuser" %>
 　          <div class="col-12 mt-3">
