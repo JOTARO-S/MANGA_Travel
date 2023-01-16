@@ -52,6 +52,18 @@ users.each do |record|
  User.create!(record) unless User.find_by(email: record[:email])
 end
 
+Relationship.create!(
+   [
+   {id: 1, follower_id: 2, followed_id: 3},{id: 2, follower_id: 2, followed_id: 4},{id: 3, follower_id: 2, followed_id: 6},
+   {id: 4, follower_id: 2, followed_id: 8},{id: 5, follower_id: 2, followed_id: 10},{id: 6, follower_id: 2, followed_id: 13},
+   {id: 7, follower_id: 3, followed_id: 2},{id: 8, follower_id: 3, followed_id: 5},{id: 9, follower_id: 3, followed_id: 7},
+   {id: 10, follower_id: 4, followed_id: 8},{id: 11, follower_id: 5, followed_id: 2},{id: 12, follower_id: 6, followed_id: 2},
+   {id: 13, follower_id: 6, followed_id: 7},{id: 14, follower_id: 7, followed_id: 2},{id: 15, follower_id: 7, followed_id: 3},
+   {id: 16, follower_id: 7, followed_id: 8},{id: 17, follower_id: 8, followed_id: 3},{id: 18, follower_id: 8, followed_id: 6},
+   {id: 19, follower_id: 10, followed_id: 3},{id: 20, follower_id: 11, followed_id: 3},{id: 21, follower_id: 12, followed_id: 3},
+   {id: 22, follower_id: 12, followed_id: 5},{id: 23, follower_id: 13, followed_id: 2},{id: 24, follower_id: 13, followed_id: 3}
+   ]
+   )
 
 Post.create!(
    [
