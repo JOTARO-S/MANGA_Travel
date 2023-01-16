@@ -17,11 +17,35 @@
 
 	          <div class="table-title pl-2">投稿数</div>
 	          <div class="pl-2"><%= @user.posts.where(is_active: false, draft_status: false).count %></div>
+	          
+	          <div class="row">
+  	          <div class="col-6">
+  	            <div class="">フォロー</div>
+  	            <div class="pl-2">
+  	              <%= link_to @user.followings.count, user_followings_path(@user) %>
+  	            </div>
+  	          </div>
+  	          
+  	          <div class="col-6">
+  	            <div class="">フォロワー</div>
+  	            <div class="pl-2">
+  	              <%= link_to @user.followers.count, user_followers_path(@user) %>
+  	            </div>
+  	          </div>
+	          </div>
+	          
 
         <div class='row'>
+          <div class="col-12 mt-3">
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー中", user_relationships_path(@user.id), class: "btn btn-outline-success btn-block", method: :delete %>
+          <% else %>
+            <%= link_to "フォロー", user_relationships_path(@user.id), class: "btn btn-success btn-block", method: :post %>
+          <% end %>
+          </div>
           <% if @user == current_user %>
 　          <% if @user.name != "guestuser" %>
-　          <div class="col-12">
+　          <div class="col-12 mt-3">
               <%= link_to "ユーザー編集",edit_user_path(@user), class: "btn btn-outline-secondary btn-block"%>
             </div>
             <div class="col-12 mt-3">

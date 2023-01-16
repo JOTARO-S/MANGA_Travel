@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'relationships/followings'
+  get 'relationships/followers'
 # 顧客用
 devise_for :user, controllers: {
   registrations: "public/registrations",
@@ -38,7 +40,11 @@ devise_for :admin, controllers: {
     get "bookmarks" => "bookmarks#index", as: "bookmarks"
     get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "users/withdraw" => "users#withdraw", as: "withdraw"
-    resources :users, except: [:new, :create, :destroy]
+    resources :users, except: [:new, :create, :destroy] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
     get "posts/draft" => "posts#draft", as: "draft"
     resources :posts do
       resource :bookmarks, only: [:create, :destroy]
