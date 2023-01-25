@@ -1,4 +1,5 @@
-      <% @bookmarks.each do |bookmark| %>
+<div class="row"> 
+    <% @bookmarks.each do |bookmark| %>
         <% if bookmark.post.is_active == false %>
         <% if bookmark.post.draft_status == false %>
         <div class="col-md-3">
@@ -43,12 +44,7 @@
             </article>
           </div>
         </div>
-            <% end %>
-            <% end %>
-            <% end %>
-      </div>
-            
-            
-        </div>
-    </div>
+        <% end %>
+        <% end %>
+    <% end %>
 </div>
