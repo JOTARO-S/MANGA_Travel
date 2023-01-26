@@ -56,6 +56,7 @@ devise_for :admin, controllers: {
     post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
     post 'contacts/back', to: 'contacts#back', as: 'back'
     get 'done', to: 'contacts#done', as: 'done'
+    resources :notifications, only: [:index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

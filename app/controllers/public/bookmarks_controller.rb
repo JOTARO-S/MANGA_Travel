@@ -9,6 +9,7 @@ class Public::BookmarksController < ApplicationController
   @post = Post.find(params[:post_id])
   @bookmark = @post.bookmarks.new(user_id: current_user.id)
   if @bookmark.save
+   @post.create_notification_like!(current_user)
   else
    redirect_to request.referer
   end

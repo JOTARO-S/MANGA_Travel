@@ -6,6 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = @post.comments.new(post_comment_params)
     @comment.user_id = current_user.id
     if @comment.save
+     @post.create_notification_comment!(current_user, @comment.id)
      redirect_to request.referer, notice: "コメントを投稿しました"
     else
      redirect_to request.referer
