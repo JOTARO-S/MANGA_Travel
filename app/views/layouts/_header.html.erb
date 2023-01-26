@@ -25,6 +25,7 @@
               <% end %>
               <!--User側ログイン中のheader-->
               <% if user_signed_in? %> <!--User客側がログイン中か確認する-->
+                  <li><%= link_to "通知", notifications_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li>
                   <li><%= link_to "ユーザー一覧", users_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--ユーザー一覧へのリンク-->
                   <li><%= link_to "投稿一覧", posts_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--投稿一覧へのリンク-->
                   <li><%= link_to "チャット一覧", chats_path, 'data-turbolinks': false, class: "nav-link text-dark" %></li><!--チャット一覧へのリンク-->
