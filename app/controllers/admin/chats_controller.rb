@@ -2,7 +2,7 @@ class Admin::ChatsController < ApplicationController
 before_action :authenticate_admin!
 
 def index
-    @chats = Chat.all.page(params[:page]).per(8)
+    @chats = Chat.all.page(params[:page]).order(created_at: "DESC").per(8)
 end
 
 def show

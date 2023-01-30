@@ -6,11 +6,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(is_active: false, draft_status: false).page(params[:page]).per(8)
+    @posts = Post.where(is_active: false, draft_status: false).order(created_at: "DESC").page(params[:page]).per(8)
     if params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @word = @tag.tag_name
-      @posts = @tag.posts.where(is_active: false, draft_status: false).page(params[:page]).per(8)
+      @posts = @tag.posts.where(is_active: false, draft_status: false).order(created_at: "DESC").page(params[:page]).per(8)
     end
   end
 
@@ -62,7 +62,7 @@ class Public::PostsController < ApplicationController
   end
   
   def draft
-    @posts = current_user.posts.where(draft_status: true).page(params[:page]).per(8)
+    @posts = current_user.posts.where(draft_status: true).order(created_at: "DESC").page(params[:page]).per(8)
   end
   
   private

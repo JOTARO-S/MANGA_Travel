@@ -4,12 +4,12 @@ class Public::UsersController < ApplicationController
 
     
     def index
-      @users = User.where(is_deleted: false).page(params[:page]).per(12)
+      @users = User.where(is_deleted: false).order(created_at: "DESC").page(params[:page]).per(12)
     end
     
     def show
       @user = User.find(params[:id])
-      @posts = @user.posts.where(is_active: false, draft_status: false).page(params[:page]).per(8)
+      @posts = @user.posts.where(is_active: false, draft_status: false).order(created_at: "DESC").page(params[:page]).per(8)
     end
     
     def edit
