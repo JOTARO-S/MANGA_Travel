@@ -1,6 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-   before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:edit]
+  before_action :is_matching_login_user, only: [:edit, :update]
+   
 
     
     def index
@@ -42,6 +44,14 @@ private
 
     def user_params
       params.require(:user).permit(:email, :name, :explanation, :user_image)
+    end
+    
+    def is_matching_login_user
+      user_id = params[:id].to_i
+      unless user_id == current_user.id
+        flash[:notice] = "そのページにはアクセスできません。"
+        redirect_to root_path
+      end
     end
     
     

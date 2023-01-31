@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :is_matching_is_active, only: [:show]
+  before_action :is_matching_post, only: [:edit, :update, :destroy]
   
   def new
     @post = Post.new
@@ -70,4 +72,23 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:name, :place, :explanation, :user_id, :category_id, :is_active, :draft_status, post_image: [])
   end
+  
+  def is_matching_is_active
+    @post= Post.find(params[:id])
+      if @post.is_active == false
+        unless @post.user_id == current_user.id
+          flash[:notice] = "そのページにはアクセスできません。"
+          redirect_to root_path
+        end
+      end
+  end
+  
+  def is_matching_post
+    @post= Post.find(params[:id])
+      unless @post.user_id == current_user.id
+        flash[:notice] = "そのページにはアクセスできません。"
+        redirect_to root_path
+      end
+  end
+  
 end
