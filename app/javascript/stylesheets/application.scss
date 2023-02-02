@@ -442,11 +442,13 @@ footer li {
   max-width: 100px;
   height: 80px;
   margin-right: 2px;
+  object-fit: cover;
 }
 
 .ex-img {
   height: 300px;
   width: 80%;
+  object-fit: contain;
 }
 
 #img {
@@ -506,6 +508,7 @@ footer li {
   margin-right: auto;
   width: 100px;
   height: 100px;
+  object-fit: cover;
 }
 
 .card__body_01 {

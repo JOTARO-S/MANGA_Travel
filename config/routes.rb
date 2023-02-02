@@ -44,6 +44,7 @@ devise_for :admin, controllers: {
       get 'followers' => 'relationships#followers', as: 'followers'
     end
     get "posts/draft" => "posts#draft", as: "draft"
+    get "posts/is_active" => "posts#is_active", as: "is_active"
     resources :posts do
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
