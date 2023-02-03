@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_26_064323) do
+ActiveRecord::Schema.define(version: 2023_02_03_073029) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -96,6 +96,25 @@ ActiveRecord::Schema.define(version: 2023_01_26_064323) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "directmails", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_directmails_on_room_id"
+    t.index ["user_id"], name: "index_directmails_on_user_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "message_content", null: false
     t.integer "user_id"
@@ -150,6 +169,11 @@ ActiveRecord::Schema.define(version: 2023_01_26_064323) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -190,6 +214,10 @@ ActiveRecord::Schema.define(version: 2023_01_26_064323) do
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "posts"
+  add_foreign_key "directmails", "rooms"
+  add_foreign_key "directmails", "users"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
