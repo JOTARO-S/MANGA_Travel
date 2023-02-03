@@ -45,6 +45,8 @@ devise_for :admin, controllers: {
     end
     get "posts/draft" => "posts#draft", as: "draft"
     get "posts/is_active" => "posts#is_active", as: "is_active"
+    resources :directmails, only: [:create]
+    resources :rooms, only: [:create, :index, :show]
     resources :posts do
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
