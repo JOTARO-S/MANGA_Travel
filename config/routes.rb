@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'directmails/show'
+  end
 # 顧客用
 devise_for :user, controllers: {
   registrations: "public/registrations",
@@ -45,8 +48,8 @@ devise_for :admin, controllers: {
     end
     get "posts/draft" => "posts#draft", as: "draft"
     get "posts/is_active" => "posts#is_active", as: "is_active"
+    get "directmail/:id" => "directmails#show", as: "directmail"
     resources :directmails, only: [:create]
-    resources :rooms, only: [:create, :index, :show]
     resources :posts do
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]

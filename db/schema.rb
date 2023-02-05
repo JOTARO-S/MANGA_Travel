@@ -99,11 +99,9 @@ ActiveRecord::Schema.define(version: 2023_02_03_073029) do
   create_table "directmails", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "room_id", null: false
-    t.text "body"
+    t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_directmails_on_room_id"
-    t.index ["user_id"], name: "index_directmails_on_user_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -111,8 +109,6 @@ ActiveRecord::Schema.define(version: 2023_02_03_073029) do
     t.integer "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -214,10 +210,6 @@ ActiveRecord::Schema.define(version: 2023_02_03_073029) do
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "posts"
-  add_foreign_key "directmails", "rooms"
-  add_foreign_key "directmails", "users"
-  add_foreign_key "entries", "rooms"
-  add_foreign_key "entries", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"

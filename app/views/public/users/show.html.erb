@@ -61,7 +61,12 @@
             </div>
             <% end %>
           <% end %>
-          
+          <% if current_user != @user %>
+            <div class="col-12 mt-3">
+              <%= link_to 'DIRECT MAIL', directmail_path(@user.id) , class: "btn btn-outline-secondary btn-block" %>
+            </div>
+          <% end %> 
+                    
         </div>
     </div>
     
