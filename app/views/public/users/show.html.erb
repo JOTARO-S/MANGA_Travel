@@ -37,13 +37,11 @@
 
         <div class='row'>
           <% unless @user == current_user %>
-          <div class="col-12 mt-3">
-          <% if current_user.following?(@user) %>
-            <%= link_to "フォロー中", user_relationships_path(@user.id), class: "btn btn-outline-success btn-block", method: :delete %>
-          <% else %>
-            <%= link_to "フォロー", user_relationships_path(@user.id), class: "btn btn-success btn-block", method: :post %>
-          <% end %>
-          </div>
+            <div class="col-12 mt-3">
+              <div id = "relationship_<%= @user.id %>">
+                <%= render partial: "public/relationships/relationship", locals: { user: @user } %>
+              </div>
+            </div>
           <% end %>
           <% if @user == current_user %>
 　          <% if @user.name != "guestuser" %>
